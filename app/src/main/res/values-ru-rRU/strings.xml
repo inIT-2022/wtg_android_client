@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Куда пойти</string>
+    <string name="main_screen">Главный экран</string>
+    <string name="events">События</string>
+    <string name="locations">Локации</string>
+    <string name="routes">Маршруты</string>
+    <string name="search">Поиск</string>
+    <string name="notice_text">Чтобы получить расширенный функкционал зарегистрируйтесь в приложекни WTG</string>
+    <string name="event_image">Изображение события</string>
+    <string name="top_events">Топ событий</string>
+    <string name="top_locations">Топ локаций</string>
+</resources>

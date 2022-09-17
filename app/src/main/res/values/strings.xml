@@ -1,3 +1,21 @@
 <resources>
+    <!--Screens-->
     <string name="app_name">Where To Go</string>
+    <string name="main_screen">Main screen</string>
+
+    <!--Bottom nav-->
+    <string name="events">Events</string>
+    <string name="locations">Locations</string>
+    <string name="routes">Routes</string>
+    <string name="search">Search</string>
+    <!--Main fragment-->
+    <string name="notice_text">To get advanced functionality, register in the WTG application</string>
+    <!--Top event card-->
+    <string name="event_image">Event image</string>
+    <!-- Fragment top locations -->
+    <string name="top_locations">Top locations</string>
+    <!-- Fragment top events -->
+    <string name="top_events">Top events</string>
+
+
 </resources>
