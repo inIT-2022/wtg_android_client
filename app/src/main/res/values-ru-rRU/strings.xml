@@ -10,4 +10,15 @@
     <string name="event_image">Изображение события</string>
     <string name="top_events">Топ событий</string>
     <string name="top_locations">Топ локаций</string>
+    <string name="main_label">Главная</string>
+    <string name="top_locations_label">Топ локаций</string>
+    <string name="top_events_label">Топ событий</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="email">почтовый адрес</string>
+    <string name="login">логин</string>
+    <string name="password">пароль</string>
+    <string name="repeat_password">повторите пароль</string>
+    <string name="accept">Принять</string>
+    <string name="sign_in">Регистрация</string>
+    <string name="sign_out">Выйти</string>
 </resources>

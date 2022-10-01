@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="@dimen/card_width"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/card_height"
+    android:background="?android:attr/selectableItemBackground"
     app:cardBackgroundColor="@color/card_background_color"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="@dimen/card_elevation"
@@ -25,8 +25,8 @@
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/event_description"
             style="@style/settings_card_description_text"
-            android:layout_marginTop="8dp"
-            tools:text="@sample/events.json/data/description"/>
+            android:layout_marginTop="@dimen/vertical_margin"
+            tools:text="@sample/events.json/data/description" />
     </LinearLayout>
 
 

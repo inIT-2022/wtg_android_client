@@ -16,18 +16,35 @@
         <item name="android:textColor">@color/card_description_text_color</item>
     </style>
 
-    <style name="settings_top_card_text" parent="settings_text">
-        <override name="android:textSize">25sp</override>
+    <style name="settings_top_card_text">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textSize">25sp</item>
     </style>
 
-    <style name="settings_top_card_description_text" parent="settings_card_description_text">
-        <override name="android:textSize">15sp</override>
-        <override name="android:layout_width">0dp</override>
-        <override name="android:maxLines">1</override>
+    <style name="settings_top_card_description_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/card_description_text_color</item>
     </style>
 
-    <style name="settings_top_card_date_text" parent="settings_top_card_description_text">
-        <override name="android:textSize">10sp</override>
+    <style name="settings_top_card_date_text">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:textSize">10sp</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:textColor">@color/card_description_text_color</item>
+    </style>
+
+    <style name="ActionButtonOverflow" parent="android:style/Widget.Holo.Light.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_auth_24</item>
+        <item name="android:background">?android:attr/actionBarItemBackground</item>
+        <item name="android:contentDescription">"Menu icon"</item>
     </style>
 
 </resources>

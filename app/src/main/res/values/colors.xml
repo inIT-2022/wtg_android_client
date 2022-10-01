@@ -13,4 +13,6 @@
     <color name="card_background_color">#D8D3D8</color>
     <color name="card_description_text_color">#2C2C2C</color>
     <color name="notice_background_color">#E6C676</color>
+    <color name="custom_edit_text_color">#CAC9C8</color>
+    <color name="reg_button_color">#1EBDED</color>
 </resources>

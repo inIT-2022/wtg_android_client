@@ -16,6 +16,21 @@
     <string name="top_locations">Top locations</string>
     <!-- Fragment top events -->
     <string name="top_events">Top events</string>
+    <!-- Sign in fragment -->
+    <string name="sign_up">Sign up</string>
+    <string name="email">email</string>
+    <string name="login">login</string>
+    <string name="password">password</string>
+    <string name="repeat_password">repeat password</string>
+    <string name="accept">Accept</string>
+    <!-- Navigation -->
+    <string name="main_label">Main</string>
+    <string name="top_locations_label">Top locations</string>
+    <string name="top_events_label">Top events</string>
+    <!-- Menu items -->
+    <string name="sign_in">Sign in</string>
+    <string name="sign_out">Sign out</string>
+    <!-- Sign up fragment -->
 
 
 </resources>
