@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="large_txt_size">20sp</dimen>
+    <dimen name="large_txt_size">15sp</dimen>
     <dimen name="description_txt_size">10sp</dimen>
     <dimen name="corner_radius">8dp</dimen>
     <dimen name="card_elevation">8dp</dimen>
@@ -18,4 +18,6 @@
     <dimen name="auth_vertical_margin">20dp</dimen>
     <dimen name="auth_vertical_margin_mid">40dp</dimen>
     <dimen name="auth_vertical_margin_small">15dp</dimen>
+
+    <dimen name="horizontal_margin">8dp</dimen>
 </resources>

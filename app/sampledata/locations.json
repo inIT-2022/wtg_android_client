@@ -10,7 +10,7 @@
     "workBreakStart": "12:00",
     "workBreakEnd": "13:00",
     "linkImage": "String",
-    "linkSite": "String",
+    "linkSite": "www.somesite.com",
     "latitude": 22.2,
     "longitude": 45.6
   }

@@ -6,9 +6,9 @@ import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.databinding.ActivityAppBinding
-import ru.sectorsj.where_to_go.utils.viewUtil.hide
-import ru.sectorsj.where_to_go.utils.viewUtil.setListener
-import ru.sectorsj.where_to_go.utils.viewUtil.show
+import ru.sectorsj.where_to_go.utils.view.hide
+import ru.sectorsj.where_to_go.utils.view.setListener
+import ru.sectorsj.where_to_go.utils.view.show
 
 class AppActivity : BaseActivity(), BottomNavController {
     lateinit var binding: ActivityAppBinding

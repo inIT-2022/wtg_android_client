@@ -7,13 +7,18 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardTopLocationBinding
 import ru.sectorsj.where_to_go.dto.Location
-import ru.sectorsj.where_to_go.utils.viewUtil.load
+import ru.sectorsj.where_to_go.utils.format.FormatUtils
+import ru.sectorsj.where_to_go.utils.view.load
 
-class TopLocationAdapter:
+interface OnLocationClickListener {
+    fun onLocationClick(location: Location)
+}
+
+class TopLocationAdapter(private val onLocationClickListener: OnLocationClickListener):
     ListAdapter<Location, TopLocationViewHolder>(TopLocationDiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopLocationViewHolder {
         val binding = CardTopLocationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return TopLocationViewHolder(binding)
+        return TopLocationViewHolder(binding, onLocationClickListener)
     }
 
     override fun onBindViewHolder(holder: TopLocationViewHolder, position: Int) {
@@ -24,15 +29,21 @@ class TopLocationAdapter:
 }
 
 class TopLocationViewHolder(
-    private val binding: CardTopLocationBinding
+    private val binding: CardTopLocationBinding,
+    private val onLocationClickListener: OnLocationClickListener
 ) : RecyclerView.ViewHolder(binding.root) {
     fun bind(location: Location) {
         with(binding) {
             topLocationTitle.text = location.title
             topLocationDescription.text = location.description
-            topLocationDate.text = location.workTimeStart
+            topLocationDate.text = FormatUtils.formatDate(location.workTimeStart)
         }
-        binding.locationImage.load(location.linkImage)
+        location.linkImage?.let {
+            binding.locationImage.load(it)
+        }
+        binding.root.setOnClickListener {
+            onLocationClickListener.onLocationClick(location)
+        }
     }
 }
 

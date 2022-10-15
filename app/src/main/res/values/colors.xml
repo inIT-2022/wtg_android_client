@@ -15,4 +15,6 @@
     <color name="notice_background_color">#E6C676</color>
     <color name="custom_edit_text_color">#CAC9C8</color>
     <color name="reg_button_color">#1EBDED</color>
+    <color name="text_view_background">#D8D3D8</color>
+    <color name="text_color">#2C2C2C</color>
 </resources>

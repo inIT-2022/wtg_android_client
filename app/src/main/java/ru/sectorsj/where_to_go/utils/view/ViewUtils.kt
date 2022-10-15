@@ -1,4 +1,4 @@
-package ru.sectorsj.where_to_go.utils.viewUtil
+package ru.sectorsj.where_to_go.utils.view
 
 import android.util.Log
 import android.view.View
@@ -39,8 +39,8 @@ fun BottomNavigationView.setListener(nav: NavController) {
 fun ImageView.load(link: String) {
     Glide.with(this)
         .load(link)
+        .placeholder(R.drawable._28_258)
         .centerCrop()
-        .fitCenter()
         .into(this)
 }
 

@@ -5,4 +5,5 @@ import ru.sectorsj.where_to_go.dto.Event
 
 interface EventRepository {
     val data: LiveData<List<Event>>
+    suspend fun getAll()
 }

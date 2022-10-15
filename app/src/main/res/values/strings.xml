@@ -2,7 +2,6 @@
     <!--Screens-->
     <string name="app_name">Where To Go</string>
     <string name="main_screen">Main screen</string>
-
     <!--Bottom nav-->
     <string name="events">Events</string>
     <string name="locations">Locations</string>
@@ -27,10 +26,10 @@
     <string name="main_label">Main</string>
     <string name="top_locations_label">Top locations</string>
     <string name="top_events_label">Top events</string>
+    <string name="event_details">Event details</string>
+    <string name="location_details">Location details</string>
     <!-- Menu items -->
     <string name="sign_in">Sign in</string>
     <string name="sign_out">Sign out</string>
     <!-- Sign up fragment -->
-
-
 </resources>

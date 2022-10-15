@@ -39,13 +39,42 @@
         android:id="@+id/topLocations"
         android:name="ru.sectorsj.where_to_go.ui.locations.TopLocationsFragment"
         android:label="@string/top_locations_label"
-        tools:layout="@layout/fragment_top_locations" />
+        tools:layout="@layout/fragment_top_locations">
+        <action
+            android:id="@+id/action_topLocations_to_locationDetailsFragment"
+            app:destination="@id/locationDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
+    </fragment>
+
+    <fragment
+        android:id="@+id/locationDetailsFragment"
+        android:name="ru.sectorsj.where_to_go.ui.locations.LocationDetailsFragment"
+        android:label="@string/location_details"
+        tools:layout="@layout/fragment_location_details" />
 
     <fragment
         android:id="@+id/topEvents"
         android:name="ru.sectorsj.where_to_go.ui.events.TopEventsFragment"
         android:label="@string/top_events_label"
-        tools:layout="@layout/fragment_top_events" />
+        tools:layout="@layout/fragment_top_events">
+        <action
+            android:id="@+id/action_topEvents_to_eventDetailsFragment"
+            app:destination="@id/eventDetailsFragment"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/eventDetailsFragment"
+        android:name="ru.sectorsj.where_to_go.ui.events.EventDetailsFragment"
+        android:label="@string/event_details"
+        tools:layout="@layout/fragment_event_details" />
 
     <fragment
         android:id="@+id/signUpFragment"

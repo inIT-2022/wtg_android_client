@@ -5,13 +5,13 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.event.EventAdapter
 import ru.sectorsj.where_to_go.adapter.location.LocationAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentMainBinding
-import ru.sectorsj.where_to_go.ui.AppActivity
 import ru.sectorsj.where_to_go.ui.AppBarController
 import ru.sectorsj.where_to_go.ui.BottomNavController
 import ru.sectorsj.where_to_go.ui.events.EventViewModel
@@ -34,13 +34,18 @@ class MainFragment : Fragment() {
         val locationAdapter = LocationAdapter {
             findNavController().navigate(R.id.actions_mainFragment_to_topLocations)
         }
+
         binding.eventsList.adapter = eventAdapter
         binding.locationsList.adapter = locationAdapter
+
         eventViewModel.data.observe(viewLifecycleOwner) {
             eventAdapter.submitList(it)
         }
         locationViewModel.data.observe(viewLifecycleOwner) {
             locationAdapter.submitList(it)
+        }
+        eventViewModel.dataState.observe(viewLifecycleOwner) {
+            binding.progressBar.isVisible = it.loading
         }
 
         binding.noticeTxt.setOnClickListener {
