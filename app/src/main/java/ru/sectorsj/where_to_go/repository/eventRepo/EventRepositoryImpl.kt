@@ -1,14 +1,18 @@
 package ru.sectorsj.where_to_go.repository.eventRepo
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
 import ru.sectorsj.where_to_go.api.EventApi
+import ru.sectorsj.where_to_go.db.dao.EventDao
+import ru.sectorsj.where_to_go.db.entity.EventEntity
+import ru.sectorsj.where_to_go.db.entity.fromEntity
+import ru.sectorsj.where_to_go.db.entity.toEntity
 import ru.sectorsj.where_to_go.dto.Event
 import java.net.ConnectException
 
-class EventRepositoryImpl() : EventRepository {
-    private val _data = MutableLiveData<List<Event>>()
-    override val data: LiveData<List<Event>> = _data
+class EventRepositoryImpl(private val dao: EventDao) : EventRepository {
+
+    override val data: LiveData<List<Event>> = dao.getAll().map(List<EventEntity>::fromEntity)
 
     override suspend fun getAll() {
         try {
@@ -17,7 +21,7 @@ class EventRepositoryImpl() : EventRepository {
                 throw ConnectException(response.code().toString())
             }
             val body = response.body() ?: throw Exception("Body is empty")
-            _data.postValue(body)
+            dao.insert(body.toEntity())
         } catch (e: Exception) {
             e.printStackTrace()
         }

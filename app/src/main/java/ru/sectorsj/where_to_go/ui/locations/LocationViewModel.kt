@@ -1,16 +1,15 @@
 package ru.sectorsj.where_to_go.ui.locations
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import android.app.Application
+import androidx.lifecycle.*
 import kotlinx.coroutines.launch
+import ru.sectorsj.where_to_go.db.AppDB
 import ru.sectorsj.where_to_go.dto.Location
 import ru.sectorsj.where_to_go.model.ModelState
 import ru.sectorsj.where_to_go.repository.locationRepo.LocationRepositoryImpl
 
-class LocationViewModel: ViewModel() {
-    private val repository = LocationRepositoryImpl()
+class LocationViewModel(application: Application): AndroidViewModel(application) {
+    private val repository = LocationRepositoryImpl(AppDB.getInstance(application).locationDao())
     val data: LiveData<List<Location>> = repository.data
 
     private val _dataState = MutableLiveData(ModelState())
