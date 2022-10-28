@@ -5,30 +5,37 @@
     android:layout_width="@dimen/card_width"
     android:layout_height="@dimen/card_height"
     android:background="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/card_background_color"
+    app:cardBackgroundColor="@color/app_main_color"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="@dimen/card_elevation"
     app:cardMaxElevation="@dimen/card_max_elevation"
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/layout_padding"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/location_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/location_title"
-            style="@style/settings_text"
-            android:maxLines="1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:maxLines="2"
+            android:ellipsize="end"
+            android:textColor="@color/white"
+            android:layout_marginStart="@dimen/card_horizontal_margin"
+            android:layout_marginBottom="@dimen/card_vertical_margin"
+            android:layout_gravity="bottom|start"
             tools:text="@sample/locations.json/data/title"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/location_description"
-            android:layout_marginTop="@dimen/vertical_margin"
-            style="@style/settings_card_description_text"
-            tools:text="@sample/locations.json/data/description"/>
-    </LinearLayout>
+    </FrameLayout>
 
 </com.google.android.material.card.MaterialCardView>

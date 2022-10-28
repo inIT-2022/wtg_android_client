@@ -31,5 +31,7 @@
     <!-- Menu items -->
     <string name="sign_in">Sign in</string>
     <string name="sign_out">Sign out</string>
+    <string name="rest">Rest</string>
+    <string name="choose_your_rest">Choose your rest</string>
     <!-- Sign up fragment -->
 </resources>

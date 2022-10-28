@@ -23,4 +23,6 @@
     <string name="sign_out">Выйти</string>
     <string name="event_details">Событие</string>
     <string name="location_details">Локация</string>
+    <string name="rest">Отдых</string>
+    <string name="choose_your_rest">Подбери свой отдых</string>
 </resources>

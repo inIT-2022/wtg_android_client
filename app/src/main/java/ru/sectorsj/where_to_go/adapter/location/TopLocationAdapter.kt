@@ -35,8 +35,6 @@ class TopLocationViewHolder(
     fun bind(location: Location) {
         with(binding) {
             topLocationTitle.text = location.title
-            topLocationDescription.text = location.description
-            topLocationDate.text = FormatUtils.formatDate(location.workTimeStart)
         }
         location.linkImage?.let {
             binding.locationImage.load(it)

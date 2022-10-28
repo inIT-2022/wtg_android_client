@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/card_background_color"
+    app:cardBackgroundColor="@color/app_main_color"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="@dimen/card_elevation"
     app:cardMaxElevation="@dimen/card_max_elevation"

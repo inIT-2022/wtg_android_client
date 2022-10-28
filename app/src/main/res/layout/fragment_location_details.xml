@@ -10,54 +10,60 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <TextView
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/location_details_title"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:background="@color/text_view_background"
+                android:background="@drawable/round_corner"
                 android:textColor="@color/text_color"
                 android:textSize="@dimen/large_txt_size"
                 android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/location_details_image"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@id/location_details_image"
                 tools:text="@sample/locations.json/data/title" />
 
-            <ImageView
+
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/location_details_image"
                 android:layout_width="0dp"
                 android:layout_height="200dp"
                 android:layout_marginTop="@dimen/vertical_margin"
-                android:scaleType="center"
                 android:visibility="gone"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
+                app:layout_constraintBottom_toTopOf="@id/location_details_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/location_details_title" />
 
-            <TextView
+
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/location_details_description"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/vertical_margin"
-                app:layout_constraintHorizontal_bias="0"
-                android:background="@color/text_view_background"
+                android:background="@drawable/round_corner"
                 android:textColor="@color/text_color"
-                tools:text="@sample/locations.json/data/fullDescription"
-                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/location_details_image"/>
+                app:layout_constraintHorizontal_bias="0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_details_image"
+                tools:text="@sample/locations.json/data/fullDescription" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/location_details_address"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/vertical_margin"
-                android:background="@color/text_view_background"
+                android:background="@drawable/round_corner"
                 android:textColor="@color/text_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
@@ -65,12 +71,12 @@
                 app:layout_constraintTop_toBottomOf="@id/location_details_description"
                 tools:text="@sample/locations.json/data/address" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/location_details_workTimeStart"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/vertical_margin"
-                android:background="@color/text_view_background"
+                android:background="@drawable/round_corner"
                 android:textColor="@color/text_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
@@ -78,12 +84,12 @@
                 app:layout_constraintTop_toBottomOf="@id/location_details_address"
                 tools:text="@sample/locations.json/data/workTimeStart" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/location_details_workTimeEnd"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/vertical_margin"
-                android:background="@color/text_view_background"
+                android:background="@drawable/round_corner"
                 android:textColor="@color/text_color"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0"
@@ -91,11 +97,12 @@
                 app:layout_constraintTop_toBottomOf="@id/location_details_workTimeStart"
                 tools:text="@sample/locations.json/data/workTimeEnd" />
 
-            <TextView
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/location_details_link"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/vertical_margin"
+                android:background="@drawable/round_corner"
                 android:autoLink="web"
                 android:linksClickable="true"
                 android:textColorLink="@color/app_main_color"
@@ -105,6 +112,133 @@
                 app:layout_constraintTop_toBottomOf="@id/location_details_workTimeEnd"
                 tools:text="@sample/locations.json/data/linkSite" />
 
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginTop="@dimen/vertical_margin"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/location_details_link">
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/share_btn_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    android:background="?android:attr/selectableItemBackground"
+                    app:cardMaxElevation="@dimen/card_max_elevation"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="1dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toStartOf="@id/favor_btn_container"
+                    app:strokeColor="@color/card_background_color">
+                    <ImageButton
+                        android:id="@+id/share_button"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/share_outline"
+                        />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/favor_btn_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    android:background="?android:attr/selectableItemBackground"
+                    app:cardMaxElevation="@dimen/card_max_elevation"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="1dp"
+                    app:layout_constraintStart_toEndOf="@id/share_btn_container"
+                    app:layout_constraintTop_toTopOf="@id/share_btn_container"
+                    app:layout_constraintBottom_toBottomOf="@id/share_btn_container"
+                    app:layout_constraintEnd_toStartOf="@id/calendar_btn_container"
+                    app:strokeColor="@color/card_background_color">
+                    <ImageButton
+                        android:id="@+id/favor_button"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/heart_outline"
+
+                        />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/calendar_btn_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:cardMaxElevation="@dimen/card_max_elevation"
+                    android:background="?android:attr/selectableItemBackground"
+                    app:layout_constraintStart_toEndOf="@id/favor_btn_container"
+                    app:layout_constraintTop_toTopOf="@id/favor_btn_container"
+                    app:layout_constraintBottom_toBottomOf="@id/favor_btn_container"
+                    app:layout_constraintEnd_toStartOf="@id/route_btn_container"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_background_color">
+                    <ImageButton
+                        android:id="@+id/calendar_button"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/calendar_plus"
+
+                        />
+                </com.google.android.material.card.MaterialCardView>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/route_btn_container"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="30dp"
+                    app:cardElevation="@dimen/card_elevation"
+                    app:cardMaxElevation="@dimen/card_max_elevation"
+                    app:cardPreventCornerOverlap="true"
+                    app:cardUseCompatPadding="true"
+                    android:background="?android:attr/selectableItemBackground"
+                    app:layout_constraintStart_toEndOf="@id/calendar_btn_container"
+                    app:layout_constraintTop_toTopOf="@id/calendar_btn_container"
+                    app:layout_constraintBottom_toBottomOf="@id/calendar_btn_container"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="@color/card_background_color">
+                    <ImageButton
+                        android:id="@+id/route_button"
+                        android:layout_marginTop="10dp"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@android:color/transparent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/route"
+                        />
+                </com.google.android.material.card.MaterialCardView>
+            </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </FrameLayout>

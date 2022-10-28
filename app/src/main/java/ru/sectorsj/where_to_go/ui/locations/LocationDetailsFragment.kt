@@ -38,6 +38,11 @@ class LocationDetailsFragment : Fragment() {
                 locationDetailsWorkTimeStart.text = FormatUtils.formatDate(it.workTimeStart)
                 locationDetailsWorkTimeEnd.text = FormatUtils.formatDate(it.workTimeEnd)
                 locationDetailsLink.text = it.linkSite
+
+                shareButton.setOnClickListener {  }
+                favorButton.setOnClickListener {  }
+                calendarButton.setOnClickListener {  }
+                routeButton.setOnClickListener {  }
             }
         }
 

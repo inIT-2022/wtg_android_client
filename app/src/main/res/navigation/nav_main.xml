@@ -33,6 +33,14 @@
             app:exitAnim="@android:anim/fade_out"
             app:popEnterAnim="@android:anim/fade_in"
             app:popExitAnim="@android:anim/fade_out" />
+        <action
+            android:id="@+id/action_mainFragment_to_fragmentRest"
+            app:destination="@id/fragmentRest"
+            app:enterAnim="@android:anim/fade_in"
+            app:exitAnim="@android:anim/fade_out"
+            app:popEnterAnim="@android:anim/fade_in"
+            app:popExitAnim="@android:anim/fade_out" />
+
     </fragment>
 
     <fragment
@@ -86,4 +94,10 @@
         android:name="ru.sectorsj.where_to_go.ui.signin.SignInFragment"
         android:label="Sign in"
         tools:layout="@layout/fragment_sign_in" />
+
+    <fragment
+        android:id="@+id/fragmentRest"
+        android:name="ru.sectorsj.where_to_go.ui.rest.RestFragment"
+        android:label="@string/rest"
+        tools:layout="@layout/fragment_rest" />
 </navigation>

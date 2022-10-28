@@ -31,6 +31,11 @@ class EventDetailsFragment : Fragment() {
                     endDateTime.text = FormatUtils.formatDate(it)
                 }
                 price.text = it.price.toString()
+
+                shareButton.setOnClickListener {  }
+                favorButton.setOnClickListener {  }
+                calendarButton.setOnClickListener {  }
+                routeButton.setOnClickListener {  }
             }
         }
         return binding.root

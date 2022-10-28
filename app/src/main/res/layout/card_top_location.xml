@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/card_background_color"
+    app:cardBackgroundColor="@color/app_main_color"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="@dimen/card_elevation"
     app:cardMaxElevation="@dimen/card_max_elevation"
@@ -18,12 +18,13 @@
         android:layout_height="match_parent"
         android:padding="@dimen/layout_padding">
 
-        <ImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/location_image"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:scaleType="center"
             android:contentDescription="@string/event_image"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

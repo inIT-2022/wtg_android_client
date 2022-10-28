@@ -48,6 +48,15 @@ class MainFragment : Fragment() {
             binding.progressBar.isVisible = it.loading
         }
 
+        binding.bikeRoute.setOnClickListener {  }
+        binding.walkingRoute.setOnClickListener {  }
+        binding.carRoute.setOnClickListener {  }
+        binding.restContainer.setOnClickListener {  }
+        binding.buttonArrow.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_fragmentRest)
+        }
+        binding.buttonArrow.setOnClickListener {  }
+
         binding.noticeTxt.setOnClickListener {
             findNavController().navigate(R.id.action_mainFragment_to_signUpFragment)
             (requireActivity() as AppBarController).hideAppBar()

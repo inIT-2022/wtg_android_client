@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardLocationBinding
 import ru.sectorsj.where_to_go.dto.Location
+import ru.sectorsj.where_to_go.utils.view.load
 
 private typealias onLocationClickListener = () -> Unit
 
@@ -31,7 +32,9 @@ class LocationViewHolder(
     fun bind(location: Location) {
         with(binding) {
             locationTitle.text = location.title
-            locationDescription.text = location.description
+            location.linkImage?.let {
+                locationImage.load(it)
+            }
         }
         binding.root.setOnClickListener {
             onLocationClickListener.invoke()
