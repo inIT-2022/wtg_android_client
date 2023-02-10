@@ -33,4 +33,5 @@
     <string name="dashboard_heading">Найди классные события</string>
     <string name="dashboard_sub_title">%1$s событий рядом с тобой</string>
     <string name="search_bar_hint">найти событие...</string>
+    <string name="show_full_description">показать весь текст...</string>
 </resources>

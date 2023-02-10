@@ -109,7 +109,7 @@ class TopEventsFragment : Fragment() {
                 flowOf(s)
                     .debounce(1000).collect { charSeq ->
                     charSeq?.let {
-                        viewModel.data.collect{ eventList ->
+                        viewModel.data.collect { eventList ->
                             eventList.filter { event ->
                                 event.title.startsWith(charSeq, true)
                             }.apply {

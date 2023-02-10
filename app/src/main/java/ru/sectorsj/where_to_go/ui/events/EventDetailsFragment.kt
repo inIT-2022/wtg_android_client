@@ -1,11 +1,11 @@
 package ru.sectorsj.where_to_go.ui.events
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.image.ImageAdapter
@@ -18,6 +18,7 @@ import ru.sectorsj.where_to_go.utils.view.hideAppBar
 
 class EventDetailsFragment : Fragment() {
     lateinit var binding: FragmentEventDetailsBinding
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -51,6 +52,10 @@ class EventDetailsFragment : Fragment() {
                 favorButton.setOnClickListener { }
                 calendarButton.setOnClickListener { }
                 routeButton.setOnClickListener { }
+                fullDescriptionButton.setOnClickListener {
+                    binding.fullDescriptionButton.visibility = View.GONE
+                    binding.eventDescription.maxLines = Int.MAX_VALUE
+                }
             }
         }
         return binding.root
@@ -65,5 +70,4 @@ class EventDetailsFragment : Fragment() {
         }
         activity?.onBackPressedDispatcher?.addCallback(viewLifecycleOwner,callback)
     }
-
 }

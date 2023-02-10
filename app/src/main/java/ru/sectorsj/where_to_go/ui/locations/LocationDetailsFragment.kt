@@ -68,6 +68,10 @@ class LocationDetailsFragment : Fragment() {
                 favorButton.setOnClickListener { }
                 calendarButton.setOnClickListener { }
                 routeButton.setOnClickListener { }
+                fullDescriptionButton.setOnClickListener {
+                    binding.fullDescriptionButton.visibility = View.GONE
+                    binding.locationDetailsDescription.maxLines = Int.MAX_VALUE
+                }
             }
         }
         return binding.root

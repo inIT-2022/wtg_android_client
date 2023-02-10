@@ -94,9 +94,25 @@
                     android:textColor="@color/text_color"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0"
+                    android:maxLines="9"
+                    android:ellipsize="end"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/event_source"
                     tools:text="@sample/events.json/data/description" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/full_description_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@android:color/transparent"
+                    android:text="@string/show_full_description"
+                    android:textAllCaps="false"
+                    android:textColor="@color/light_grey"
+                    android:textSize="12sp"
+                    app:layout_constraintBottom_toTopOf="@id/event_start"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/event_description"
+                    app:layout_goneMarginBottom="20dp" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/event_start"
@@ -107,7 +123,7 @@
                     android:textColor="@color/text_color"
                     app:layout_constraintStart_toStartOf="parent"
                     android:layout_marginTop="@dimen/vertical_margin"
-                    app:layout_constraintTop_toBottomOf="@id/event_description"/>
+                    app:layout_constraintTop_toBottomOf="@id/full_description_button"/>
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/event_end"
