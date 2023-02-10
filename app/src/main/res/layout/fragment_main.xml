@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -10,6 +9,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
@@ -17,9 +17,10 @@
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/registration_notice"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content"
+                android:layout_height="40dp"
                 app:cardBackgroundColor="@color/notice_background_color"
                 app:cardCornerRadius="@dimen/corner_radius"
+                android:padding="@dimen/layout_padding"
                 app:cardPreventCornerOverlap="true"
                 app:cardUseCompatPadding="true"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -30,21 +31,32 @@
                     android:id="@+id/notice_txt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:fontFamily="@font/comfortaa"
+                    android:layout_gravity="start|center"
                     android:text="@string/notice_text"
+                    android:textColor="?android:textColor"
                     android:textSize="@dimen/notice_text_size" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/notice_close_btn"
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center|end"
+                    android:background="@android:color/transparent"
+                    app:icon="@drawable/coolicon"
+                    app:iconGravity="textEnd"
+                    app:iconTint="@color/black"
+                    android:layout_marginEnd="@dimen/horizontal_margin"/>
             </com.google.android.material.card.MaterialCardView>
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/events_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/horizontal_margin"
-                android:layout_marginTop="@dimen/mid_vertical_margin"
+                android:layout_marginTop="36dp"
                 android:text="@string/events"
-                android:textColor="@color/black"
-                android:textSize="36sp"
+                style="@style/main_fragment_text_style"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.1"
+                app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -69,16 +81,12 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/locations_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/horizontal_margin"
                 android:text="@string/locations"
-                android:textColor="@color/black"
-                android:textSize="36sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/events_barrier" />
+                app:layout_constraintTop_toBottomOf="@id/events_barrier"
+                style="@style/main_fragment_text_style" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/locations_list"
@@ -100,139 +108,131 @@
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/routes_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/horizontal_margin"
                 android:text="@string/routes"
-                android:textColor="@color/black"
-                android:textSize="36sp"
+                style="@style/main_fragment_text_style"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.1"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/locations_barrier" />
 
-            <com.google.android.material.card.MaterialCardView
+
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/walking_route"
                 android:layout_width="0dp"
-                android:layout_height="123dp"
-                android:layout_marginTop="10dp"
+                android:layout_height="150dp"
                 android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
                 android:layout_marginEnd="10dp"
+                android:scaleType="centerCrop"
                 android:background="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/app_main_color"
-                app:cardCornerRadius="@dimen/corner_radius"
+                android:src="@drawable/img1"
                 app:layout_constraintEnd_toStartOf="@id/bike_route"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/routes_txt">
+                app:layout_constraintTop_toBottomOf="@id/routes_txt"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
 
-                <ImageView
-                    android:layout_width="@dimen/route_image_size"
-                    android:layout_height="@dimen/route_image_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/walking_human" />
-            </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/bike_route"
                 android:layout_width="0dp"
-                android:layout_height="123dp"
+                android:layout_height="150dp"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/app_main_color"
-                app:cardCornerRadius="@dimen/corner_radius"
+                android:src="@drawable/img2"
+                android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="@id/walking_route"
                 app:layout_constraintEnd_toStartOf="@id/car_route"
                 app:layout_constraintStart_toEndOf="@id/walking_route"
-                app:layout_constraintTop_toTopOf="@id/walking_route">
+                app:layout_constraintTop_toTopOf="@id/walking_route" />
 
-                <ImageView
-                    android:layout_width="@dimen/route_image_size"
-                    android:layout_height="@dimen/route_image_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/bike" />
-            </com.google.android.material.card.MaterialCardView>
 
-            <com.google.android.material.card.MaterialCardView
+            <com.google.android.material.imageview.ShapeableImageView
                 android:id="@+id/car_route"
                 android:layout_width="0dp"
-                android:layout_height="123dp"
+                android:layout_height="150dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginEnd="10dp"
                 android:background="?android:attr/selectableItemBackground"
-                app:cardBackgroundColor="@color/app_main_color"
-                app:cardCornerRadius="@dimen/corner_radius"
+                android:src="@drawable/img3"
+                android:scaleType="centerCrop"
+                app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
                 app:layout_constraintBottom_toBottomOf="@id/walking_route"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/bike_route"
-                app:layout_constraintTop_toTopOf="@id/walking_route">
-
-                <ImageView
-                    android:layout_width="@dimen/route_image_size"
-                    android:layout_height="@dimen/route_image_size"
-                    android:layout_gravity="center"
-                    android:src="@drawable/car" />
-            </com.google.android.material.card.MaterialCardView>
+                app:layout_constraintTop_toTopOf="@id/walking_route" />
 
             <androidx.constraintlayout.widget.Barrier
                 android:id="@+id/routes_barrier"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                app:constraint_referenced_ids="walking_route, bike_route, car_route"
-                app:barrierDirection="bottom"/>
+                app:barrierDirection="bottom"
+                app:constraint_referenced_ids="walking_route, bike_route, car_route" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/rest_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:textSize="36sp"
+                style="@style/main_fragment_text_style"
                 android:layout_marginTop="@dimen/vertical_margin"
-                android:layout_marginStart="@dimen/horizontal_margin"
-                app:layout_constraintStart_toStartOf="parent"
+                android:text="@string/rest"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/routes_barrier"
                 app:layout_constraintHorizontal_bias="0"
-                android:textColor="@color/black"
-                android:text="@string/rest"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/routes_barrier" />
 
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/rest_container"
                 android:layout_width="0dp"
                 android:layout_height="70dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginBottom="10dp"
                 android:background="?android:attr/selectableItemBackground"
                 app:cardBackgroundColor="@color/app_main_color"
                 app:cardCornerRadius="@dimen/corner_radius"
-                android:layout_marginTop="10dp"
-                android:layout_marginStart="10dp"
-                android:layout_marginEnd="10dp"
-                android:layout_marginBottom="10dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/rest_txt"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintVertical_bias="0">
 
-                <LinearLayout
+                <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal">
-                    <com.google.android.material.textview.MaterialTextView
-                        android:id="@+id/choose_your_rest_txt"
-                        android:layout_width="wrap_content"
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/rest_image"
+                        android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:gravity="center"
-                        android:text="@string/choose_your_rest"
-                        android:layout_marginStart="10dp"
-                        android:textColor="@color/black"
-                        android:textSize="24sp"/>
-                    <ImageButton
-                        android:id="@+id/button_arrow"
-                        android:layout_marginStart="10dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:layout_width="wrap_content"
-                        android:layout_height="match_parent"
-                        android:src="@drawable/right_md"/>
-                </LinearLayout>
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/img4"
+                        app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent">
+                        <com.google.android.material.textview.MaterialTextView
+                            android:id="@+id/choose_your_rest_txt"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="10dp"
+                            android:gravity="center"
+                            android:fontFamily="@font/comfortaa"
+                            android:text="@string/choose_your_rest"
+                            android:textColor="@color/black"
+                            android:textSize="24sp" />
+                        <ImageButton
+                            android:id="@+id/button_arrow"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:layout_marginStart="16dp"
+                            android:layout_gravity="center"
+                            android:backgroundTint="@android:color/transparent"
+                            android:src="@drawable/right_md" />
+                    </LinearLayout>
+                </FrameLayout>
 
             </com.google.android.material.card.MaterialCardView>
 

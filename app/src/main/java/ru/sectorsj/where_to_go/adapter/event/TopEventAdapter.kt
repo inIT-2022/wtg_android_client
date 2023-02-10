@@ -8,6 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardTopEventBinding
 import ru.sectorsj.where_to_go.dto.Event
 import ru.sectorsj.where_to_go.utils.format.FormatUtils
+import ru.sectorsj.where_to_go.utils.view.load
 
 typealias OnEventClickListener = (Event) -> Unit
 
@@ -32,10 +33,15 @@ class TopEventViewHolder(
     RecyclerView.ViewHolder(binding.root) {
         fun bind(event: Event) {
             with(binding) {
-                topEventTitle.text = event.title
-                topEventDescription.text = event.description
+                eventTitle.text = event.title
+                eventLocation.text = event.location.title
+                event.location.linkImage?.let {
+                    val linkImages = it.split("|")
+                    val linkImage = linkImages[0].trim()
+                    eventImage.load(linkImage)
+                }
                 event.startDatetime?.let {
-                    topEventDate.text = FormatUtils.formatDate(it)
+                    //eventDate.text = FormatUtils.formatDate(it)
                 }
             }
             binding.root.setOnClickListener {

@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.location.OnLocationClickListener
@@ -38,14 +39,19 @@ class TopLocationsFragment : Fragment() {
             }
         })
         binding.listTopLocations.adapter = adapter
-        viewModel.data.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.data.collect {
+                adapter.submitList(it)
+            }
         }
 
-        viewModel.dataState.observe(viewLifecycleOwner) {
-            with(binding) {
-                progressBar.isVisible = it.loading
-                swipeRefresh.isRefreshing = it.refreshing
+        lifecycleScope.launchWhenCreated {
+            viewModel.dataState.collect {
+                with(binding) {
+                    progressBar.isVisible = it.loading
+                    swipeRefresh.isRefreshing = it.refreshing
+                }
             }
         }
 

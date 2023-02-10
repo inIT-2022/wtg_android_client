@@ -37,7 +37,9 @@ class TopLocationViewHolder(
             topLocationTitle.text = location.title
         }
         location.linkImage?.let {
-            binding.locationImage.load(it)
+            val arr = it.split("|")
+            val link = arr[0].trim()
+            binding.locationImage.load(link)
         }
         binding.root.setOnClickListener {
             onLocationClickListener.onLocationClick(location)

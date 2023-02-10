@@ -25,4 +25,12 @@
     <string name="location_details">Локация</string>
     <string name="rest">Отдых</string>
     <string name="choose_your_rest">Подбери свой отдых</string>
+    <string name="location_work_days">ПН-ПТ: c %1$s до %2$s</string>
+    <string name="location_work_weekend">СБ-ВС: c %1$s до %2$s</string>
+    <string name="location_work_break">перерыв: c %1$s до %2$s</string>
+    <string name="source">Источник</string>
+    <string name="not_indicated">не указано</string>
+    <string name="dashboard_heading">Найди классные события</string>
+    <string name="dashboard_sub_title">%1$s событий рядом с тобой</string>
+    <string name="search_bar_hint">найти событие...</string>
 </resources>

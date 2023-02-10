@@ -1,22 +1,35 @@
 package ru.sectorsj.where_to_go.db.entity
 
+import androidx.room.ColumnInfo
+import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import ru.sectorsj.where_to_go.dto.Event
+import ru.sectorsj.where_to_go.dto.Location
 
 @Entity
 data class EventEntity(
     @PrimaryKey(autoGenerate = true)
+    @ColumnInfo(name = "_id")
     val id: Long,
+    @ColumnInfo(name = "_title")
     val title: String,
+    @ColumnInfo(name = "_description")
     val description: String,
+    @ColumnInfo(name = "_startDatetime")
     val startDatetime: String?,
+    @ColumnInfo(name = "_finishDateTime")
     val finishDatetime: String?,
+    @ColumnInfo(name = "_linkEventSite")
     val linkEventSite: String,
+    @ColumnInfo(name = "_price")
     val price: Int?,
-    val location: Long,
+    @Embedded
+    val location: Location,
+    @ColumnInfo(name = "_isActive")
     val isActive: Boolean,
-    val userCreatedId: Long
+    @ColumnInfo(name = "_userCreatedId")
+    val userCreatedId: Long,
 ) {
     fun toDto() = Event(
         id = id,
@@ -28,7 +41,7 @@ data class EventEntity(
         price = price,
         location = location,
         isActive = isActive,
-        userCreatedId = userCreatedId
+        userCreatedId = userCreatedId,
     )
 
     companion object {
@@ -42,7 +55,7 @@ data class EventEntity(
             price = dto.price,
             location = dto.location,
             isActive = dto.isActive,
-            userCreatedId = dto.userCreatedId
+            userCreatedId = dto.userCreatedId,
         )
     }
 }

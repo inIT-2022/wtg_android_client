@@ -13,9 +13,10 @@ private typealias onLocationClickListener = () -> Unit
 
 class LocationAdapter(
     private val onLocationClickListener: onLocationClickListener
-): ListAdapter<Location, LocationViewHolder>(LocationDiffCallBack()) {
+) : ListAdapter<Location, LocationViewHolder>(LocationDiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
-        val binding = CardLocationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding =
+            CardLocationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return LocationViewHolder(binding, onLocationClickListener)
     }
 
@@ -28,12 +29,14 @@ class LocationAdapter(
 class LocationViewHolder(
     private val binding: CardLocationBinding,
     private val onLocationClickListener: onLocationClickListener
-): RecyclerView.ViewHolder(binding.root) {
+) : RecyclerView.ViewHolder(binding.root) {
     fun bind(location: Location) {
         with(binding) {
             locationTitle.text = location.title
             location.linkImage?.let {
-                locationImage.load(it)
+                val arr = it.split("|")
+                val link = arr[0].trim()
+                locationImage.load(link)
             }
         }
         binding.root.setOnClickListener {
@@ -42,7 +45,7 @@ class LocationViewHolder(
     }
 }
 
-class LocationDiffCallBack: DiffUtil.ItemCallback<Location>() {
+class LocationDiffCallBack : DiffUtil.ItemCallback<Location>() {
     override fun areItemsTheSame(oldItem: Location, newItem: Location): Boolean {
         return oldItem.id == newItem.id
     }

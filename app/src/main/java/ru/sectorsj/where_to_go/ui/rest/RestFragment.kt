@@ -17,6 +17,20 @@ class RestFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentRestBinding.inflate(inflater, container, false)
+
+        with(binding) {
+            restDateBtn.setOnClickListener { }
+            restTimeBtn.setOnClickListener { }
+            restViewBtn.setOnClickListener { }
+            restCategoryBtn.setOnClickListener { }
+            restPlaceBtn.setOnClickListener { }
+            restEventBtn.setOnClickListener { }
+            restPriceBtn.setOnClickListener { }
+            restSomethingElseBtn.setOnClickListener { }
+            restShareGeolocationBtn.setOnClickListener { }
+            restInviteToEventBtn.setOnClickListener { }
+            restVehicleSearchBtn.setOnClickListener { }
+        }
         return binding.root
     }
 

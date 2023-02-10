@@ -12,23 +12,19 @@
     app:cardPreventCornerOverlap="true"
     app:cardUseCompatPadding="true">
 
-    <LinearLayout
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="@dimen/layout_padding"
-        android:orientation="vertical">
+        android:layout_height="match_parent">
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/event_image"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
+            style="@style/card_image_style" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/event_title"
-            style="@style/settings_text"
-            tools:text="@sample/events.json/data/title" />
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/event_description"
-            style="@style/settings_card_description_text"
-            android:layout_marginTop="@dimen/vertical_margin"
-            tools:text="@sample/events.json/data/description" />
-    </LinearLayout>
-
+            tools:text="@sample/events.json/data/title"
+            style="@style/card_text_style" />
+    </FrameLayout>
 
 </com.google.android.material.card.MaterialCardView>

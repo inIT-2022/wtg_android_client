@@ -17,13 +17,14 @@ class AppActivity : BaseActivity(), BottomNavController {
         super.onCreate(savedInstanceState)
         binding = ActivityAppBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        setSupportActionBar(binding.toolbar)
         val bottomNav = binding.bottomNav
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment)
         val navController = navHostFragment?.findNavController()
         navController?.let {
-            bottomNav.setListener(navController)
+            bottomNav.setListener(navController, this@AppActivity)
         }
-        window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        //window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
     }
 

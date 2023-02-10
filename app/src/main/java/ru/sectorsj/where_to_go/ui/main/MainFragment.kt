@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.flow.collect
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.event.EventAdapter
 import ru.sectorsj.where_to_go.adapter.location.LocationAdapter
@@ -38,14 +40,26 @@ class MainFragment : Fragment() {
         binding.eventsList.adapter = eventAdapter
         binding.locationsList.adapter = locationAdapter
 
-        eventViewModel.data.observe(viewLifecycleOwner) {
-            eventAdapter.submitList(it)
+        lifecycleScope.launchWhenCreated {
+            eventViewModel.data.collect {
+                eventAdapter.submitList(it)
+            }
         }
-        locationViewModel.data.observe(viewLifecycleOwner) {
-            locationAdapter.submitList(it)
+
+        lifecycleScope.launchWhenCreated {
+            eventViewModel.dataState.collect {
+                binding.progressBar.isVisible = it.loading
+            }
         }
-        eventViewModel.dataState.observe(viewLifecycleOwner) {
-            binding.progressBar.isVisible = it.loading
+
+        lifecycleScope.launchWhenCreated {
+            locationViewModel.data.collect {
+                locationAdapter.submitList(it)
+            }
+        }
+
+        binding.noticeCloseBtn.setOnClickListener {
+            binding.registrationNotice.visibility = View.GONE
         }
 
         binding.bikeRoute.setOnClickListener {  }

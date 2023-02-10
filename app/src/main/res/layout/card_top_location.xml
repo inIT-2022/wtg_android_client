@@ -6,7 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    app:cardBackgroundColor="@color/app_main_color"
+    app:cardBackgroundColor="@color/topCard_background_color"
     app:cardCornerRadius="@dimen/corner_radius"
     app:cardElevation="@dimen/card_elevation"
     app:cardMaxElevation="@dimen/card_max_elevation"
@@ -39,7 +39,7 @@
             app:layout_constraintHorizontal_bias="0.1"/>
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/top_location_description"
+            android:id="@+id/top_event_description"
             style="@style/settings_top_card_description_text"
             android:layout_marginTop="@dimen/vertical_margin"
             app:layout_constraintTop_toBottomOf="@id/top_location_title"
@@ -49,11 +49,11 @@
             tools:text="@sample/locations.json/data/fullDescription"/>
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/top_location_date"
+            android:id="@+id/top_event_date"
             style="@style/settings_top_card_date_text"
             tools:text="@sample/events.json/data/startDatetime"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/top_location_description"/>
+            app:layout_constraintTop_toBottomOf="@id/top_event_description"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

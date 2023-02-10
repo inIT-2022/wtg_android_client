@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardEventBinding
 import ru.sectorsj.where_to_go.dto.Event
+import ru.sectorsj.where_to_go.utils.view.load
 
 private typealias onEventClickListener = () -> Unit
 
@@ -32,7 +33,11 @@ class EventViewHolder(
     fun bind(event: Event) {
         with(binding) {
             eventTitle.text = event.title
-            eventDescription.text = event.description
+            event.location.linkImage?.let {
+                val linkImages = it.split("|")
+                val linkImage = linkImages[0].trim()
+                eventImage.load(linkImage)
+            }
         }
         binding.root.setOnClickListener {
             onEventClickListener.invoke()

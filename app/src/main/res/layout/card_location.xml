@@ -18,24 +18,13 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/location_image"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:scaleType="centerCrop"
-            android:layout_gravity="center"
-            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent" />
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize5Percent"
+            style="@style/card_image_style"/>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/location_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textSize="15sp"
-            android:maxLines="2"
-            android:ellipsize="end"
-            android:textColor="@color/white"
-            android:layout_marginStart="@dimen/card_horizontal_margin"
-            android:layout_marginBottom="@dimen/card_vertical_margin"
-            android:layout_gravity="bottom|start"
-            tools:text="@sample/locations.json/data/title"/>
+            tools:text="@sample/locations.json/data/title"
+            style="@style/card_text_style"/>
     </FrameLayout>
 
 </com.google.android.material.card.MaterialCardView>

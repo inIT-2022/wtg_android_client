@@ -1,23 +1,301 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".ui.rest.RestFragment"
-    android:padding="@dimen/layout_padding">
+    android:padding="@dimen/layout_padding"
+    tools:context=".ui.rest.RestFragment">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/title"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:background="@drawable/background_grey_round_corner"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:text="Choose your rest"
-        android:textSize="@dimen/title_text_size"
-        android:textColor="@color/text_color"
-        android:gravity="center"/>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/horizontal_margin">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/details_rest_image"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/img4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/ShapeAppearanceOverlay.App.CornerSize10Percent" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_date_and_time"
+            style="@style/rest_text_style"
+            android:layout_marginTop="@dimen/vertical_margin"
+            android:text="дата и время"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_rest_image" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_view"
+            style="@style/rest_text_style"
+            android:text="вид"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_date_and_time" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_category"
+            style="@style/rest_text_style"
+            android:text="категория"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_view" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_place"
+            style="@style/rest_text_style"
+            android:text="место"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_category" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_event"
+            style="@style/rest_text_style"
+            android:text="мероприятие"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_place" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_price"
+            style="@style/rest_text_style"
+            android:text="цена"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_event" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_something_else"
+            style="@style/rest_text_style"
+            android:text="что-то еще"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_price" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/rest_barrier"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="end"
+            app:constraint_referenced_ids="rest_date_and_time, rest_view,rest_category,rest_place,rest_event,rest_price,rest_something_else" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_date_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/mid_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="12.06.2023"
+            android:textSize="10sp"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:icon="@drawable/calendar"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintStart_toStartOf="@id/rest_barrier"
+            app:layout_constraintTop_toTopOf="@id/rest_date_and_time"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_time_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/horizontal_margin"
+            android:layout_marginEnd="@dimen/horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="12:00"
+            android:textSize="10sp"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:icon="@drawable/vector"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.625"
+            app:layout_constraintStart_toEndOf="@id/rest_date_btn"
+            app:layout_constraintTop_toTopOf="@id/rest_date_btn"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_view_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/mid_horizontal_margin"
+            android:layout_marginEnd="@dimen/mid_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="Выбор"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/rest_barrier"
+            app:layout_constraintTop_toTopOf="@id/rest_view"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_category_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/mid_horizontal_margin"
+            android:layout_marginEnd="@dimen/mid_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="Выбор"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/rest_barrier"
+            app:layout_constraintTop_toTopOf="@id/rest_category"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_place_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/mid_horizontal_margin"
+            android:layout_marginEnd="@dimen/mid_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="Выбор"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/rest_barrier"
+            app:layout_constraintTop_toTopOf="@id/rest_place"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_event_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/mid_horizontal_margin"
+            android:layout_marginEnd="@dimen/mid_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="Выбор"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/rest_barrier"
+            app:layout_constraintTop_toTopOf="@id/rest_event"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_price_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/mid_horizontal_margin"
+            android:layout_marginEnd="@dimen/mid_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="Выбор"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/rest_barrier"
+            app:layout_constraintTop_toTopOf="@id/rest_price"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/rest_something_else_btn"
+            android:layout_width="0dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="@dimen/mid_horizontal_margin"
+            android:layout_marginEnd="@dimen/mid_horizontal_margin"
+            android:backgroundTint="@color/white"
+            android:text="Выбор"
+            android:textAllCaps="false"
+            android:textColor="@color/text_color"
+            app:cornerRadius="50dp"
+            app:iconGravity="end"
+            app:iconTint="@color/btn_icon_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="@id/rest_barrier"
+            app:layout_constraintTop_toTopOf="@id/rest_something_else"
+            app:strokeColor="@color/btn_stroke_color"
+            app:strokeWidth="1dp" />
+
+        <androidx.constraintlayout.widget.Barrier
+            android:id="@+id/rest_barrier_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:barrierDirection="bottom"
+            app:constraint_referenced_ids="rest_something_else_btn" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_share_geolocation"
+            style="@style/rest_text_style"
+            android:text="поделиться геолокацией"
+            app:layout_constraintVertical_bias="0"
+            app:layout_constraintVertical_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_barrier_2"
+            app:layout_constraintBottom_toTopOf="@id/rest_invite_to_event"/>
+
+        <ImageButton
+            android:id="@+id/rest_share_geolocation_btn"
+            style="@style/rest_buttons_style"
+            android:elevation="5dp"
+            android:src="@drawable/location_information"
+            app:layout_constraintBottom_toBottomOf="@+id/rest_share_geolocation"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rest_share_geolocation" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_invite_to_event"
+            style="@style/rest_text_style"
+            android:layout_marginTop="48dp"
+            android:text="пригласить на мероприятие"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_share_geolocation"
+            app:layout_constraintBottom_toTopOf="@id/rest_vehicle_search"/>
+
+        <ImageButton
+            android:id="@+id/rest_invite_to_event_btn"
+            style="@style/rest_buttons_style"
+            android:elevation="5dp"
+            android:src="@drawable/add_profile"
+            app:layout_constraintBottom_toBottomOf="@+id/rest_invite_to_event"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rest_invite_to_event" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/rest_vehicle_search"
+            style="@style/rest_text_style"
+            android:layout_marginTop="48dp"
+            android:text="поиск транспортного средства"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/rest_invite_to_event" />
+
+        <ImageButton
+            android:id="@+id/rest_vehicle_search_btn"
+            style="@style/rest_buttons_style"
+            android:elevation="5dp"
+            android:src="@drawable/taxi"
+            app:layout_constraintBottom_toBottomOf="@+id/rest_vehicle_search"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/rest_vehicle_search" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</ScrollView>

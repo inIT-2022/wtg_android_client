@@ -3,7 +3,6 @@ package ru.sectorsj.where_to_go.dto
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
 
-
 @Parcelize
 data class Event(
     val id: Long,
@@ -13,7 +12,7 @@ data class Event(
     val finishDatetime: String?,
     val linkEventSite: String,
     val price: Int?,
-    val location: Long,
+    val location: Location,
     val isActive: Boolean,
-    val userCreatedId: Long
+    val userCreatedId: Long,
 ) : Parcelable

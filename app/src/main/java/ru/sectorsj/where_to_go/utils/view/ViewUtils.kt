@@ -1,8 +1,10 @@
 package ru.sectorsj.where_to_go.utils.view
 
+import android.content.Context
 import android.util.Log
 import android.view.View
 import android.widget.ImageView
+import androidx.fragment.app.Fragment
 import androidx.navigation.NavController
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
@@ -12,14 +14,16 @@ import com.bumptech.glide.request.RequestOptions
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.imageview.ShapeableImageView
 import ru.sectorsj.where_to_go.R
+import ru.sectorsj.where_to_go.ui.AppBarController
 
 
 //BottomNavigationView extensions
-fun BottomNavigationView.setListener(nav: NavController) {
+fun BottomNavigationView.setListener(nav: NavController, context: Context? = null) {
     setOnItemSelectedListener {
         when(it.itemId) {
             R.id.main_page -> {
                 nav.navigate(R.id.mainFragment)
+                (context as AppBarController).showAppBar()
                 true
             }
             R.id.events_page -> {
@@ -28,14 +32,17 @@ fun BottomNavigationView.setListener(nav: NavController) {
             }
             R.id.locations_page -> {
                 nav.navigate(R.id.topLocations)
+                (context as AppBarController).showAppBar()
                 true
             }
             R.id.routes_page -> {
                 Log.i("AAAAAAA", "ROUTES PAGE CLICKED")
+                (context as AppBarController).showAppBar()
                 true
             }
             R.id.search_page -> {
                 Log.i("AAAAAAA", "SEARCH PAGE CLICKED")
+                (context as AppBarController).showAppBar()
                 true
             }
             else -> false
@@ -49,6 +56,14 @@ fun BottomNavigationView.show() {
 
 fun BottomNavigationView.hide() {
     visibility = View.GONE
+}
+
+fun Fragment.hideAppBar() {
+    (requireActivity() as AppBarController).hideAppBar()
+}
+
+fun Fragment.showAppBar() {
+    (requireActivity() as AppBarController).showAppBar()
 }
 
 //ImageView extensions
