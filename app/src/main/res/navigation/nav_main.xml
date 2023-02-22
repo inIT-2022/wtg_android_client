@@ -89,6 +89,7 @@
         android:name="ru.sectorsj.where_to_go.ui.signup.SignUpFragment"
         android:label="Sign up"
         tools:layout="@layout/fragment_sign_up" />
+
     <fragment
         android:id="@+id/signInFragment"
         android:name="ru.sectorsj.where_to_go.ui.signin.SignInFragment"

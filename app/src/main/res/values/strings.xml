@@ -18,13 +18,18 @@
     <string name="location_work_break">перерыв: c %1$s до %2$s</string>
     <!-- Fragment top events -->
     <string name="top_events">Top events</string>
-    <!-- Sign in fragment -->
+    <!-- Sign up fragment -->
     <string name="sign_up">Sign up</string>
     <string name="email">email</string>
     <string name="login">login</string>
     <string name="password">password</string>
+    <string name="name">name</string>
+    <string name="surname">surname</string>
     <string name="repeat_password">repeat password</string>
+    <string name="birth_date">birth date</string>
     <string name="accept">Accept</string>
+    <string name="security_policy">Security policy</string>
+    <string name="restore_password">Restore password</string>
     <!-- Navigation -->
     <string name="main_label">Main</string>
     <string name="top_locations_label">Top locations</string>
@@ -37,7 +42,6 @@
     <string name="rest">Rest</string>
     <string name="choose_your_rest">Choose your rest</string>
     <string name="source">Source</string>
-    <!-- Sign up fragment -->
 
     <string name="not_indicated">not indicated</string>
     <string name="dashboard_heading">Find amazing events happening around you</string>

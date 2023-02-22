@@ -13,13 +13,13 @@
     <string name="main_label">Главная</string>
     <string name="top_locations_label">Топ локаций</string>
     <string name="top_events_label">Топ событий</string>
-    <string name="sign_up">Войти</string>
+    <string name="sign_up">Регистрация</string>
     <string name="email">почтовый адрес</string>
     <string name="login">логин</string>
     <string name="password">пароль</string>
     <string name="repeat_password">повторите пароль</string>
     <string name="accept">Принять</string>
-    <string name="sign_in">Регистрация</string>
+    <string name="sign_in">Войти</string>
     <string name="sign_out">Выйти</string>
     <string name="event_details">Событие</string>
     <string name="location_details">Локация</string>
@@ -34,4 +34,9 @@
     <string name="dashboard_sub_title">%1$s событий рядом с тобой</string>
     <string name="search_bar_hint">найти событие...</string>
     <string name="show_full_description">показать весь текст...</string>
+    <string name="name">имя</string>
+    <string name="surname">фамилия</string>
+    <string name="birth_date">дата рождения</string>
+    <string name="security_policy">Политика безопасности</string>
+    <string name="restore_password">Восстановить пароль</string>
 </resources>
