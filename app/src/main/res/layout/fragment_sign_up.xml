@@ -95,7 +95,7 @@
                 android:background="@drawable/custom_edit_text"
                 android:textSize="@dimen/auth_text_size"
                 android:hint="@string/birth_date"
-                android:inputType="date"
+                android:inputType="datetime"
                 android:textCursorDrawable="@drawable/custom_edittext_cursor"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
