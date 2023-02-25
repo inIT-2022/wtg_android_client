@@ -39,4 +39,8 @@
     <string name="birth_date">дата рождения</string>
     <string name="security_policy">Политика безопасности</string>
     <string name="restore_password">Восстановить пароль</string>
+    <string name="notify">Необходимо заполнить все поля</string>
+    <string name="notify_email">Невалидный email</string>
+    <string name="notify_pass">Невалидный пароль</string>
+    <string name="notify_pass_not_equals">Пароли не совпадают</string>
 </resources>

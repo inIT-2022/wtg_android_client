@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
-    <item
-        android:id="@+id/sign_in"
-        android:title="@string/sign_in" />
+    <group
+        android:id="@+id/unAuth">
+        <item
+            android:id="@+id/sign_in"
+            android:title="@string/sign_in" />
 
-    <item
-        android:id="@+id/sign_up"
-        android:title="@string/sign_up" />
-    <item
-        android:id="@+id/sign_out"
-        android:title="@string/sign_out" />
+        <item
+            android:id="@+id/sign_up"
+            android:title="@string/sign_up" />
+    </group>
+
+    <group
+        android:id="@+id/auth">
+        <item
+            android:id="@+id/sign_out"
+            android:title="@string/sign_out" />
+    </group>
+
 
 
 </menu>

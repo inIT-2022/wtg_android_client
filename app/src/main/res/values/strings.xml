@@ -30,6 +30,10 @@
     <string name="accept">Accept</string>
     <string name="security_policy">Security policy</string>
     <string name="restore_password">Restore password</string>
+    <string name="notify">All fields must be filled</string>
+    <string name="notify_email">Invalid email</string>
+    <string name="notify_pass">Invalid password</string>
+    <string name="notify_pass_not_equals">Passwords are not equals</string>
     <!-- Navigation -->
     <string name="main_label">Main</string>
     <string name="top_locations_label">Top locations</string>
