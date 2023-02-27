@@ -39,9 +39,11 @@ class SignInFragment : Fragment() {
             }
         }
         lifecycleScope.launchWhenCreated {
-            signInViewModel.data.collectLatest {
-                WtgAppAuth.getInstance().setAuth(it.email)
-                findNavController().navigateUp()
+            signInViewModel.data.collectLatest { authState ->
+                WtgAppAuth.getInstance().setAuth(authState.email)
+                if (authState.email != null) {
+                    findNavController().navigateUp()
+                }
             }
         }
         return binding.root

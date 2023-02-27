@@ -12,7 +12,7 @@ import java.net.ConnectException
 private val empty = User(
     0,
     "",
-    "",
+    null,
     "",
     "",
     "",

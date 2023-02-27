@@ -58,6 +58,7 @@ class WtgAppAuth private constructor(context: Context) {
             clear()
             apply()
         }
+        authStateFlow.value = AuthState()
     }
 
 }

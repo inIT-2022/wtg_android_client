@@ -6,7 +6,7 @@ import ru.sectorsj.where_to_go.model.Authorities
 data class User(
     val id: Long,
     val login: String,
-    val email: String,
+    val email: String?,
     val password: String?,
     val firstName: String,
     val lastName: String,
