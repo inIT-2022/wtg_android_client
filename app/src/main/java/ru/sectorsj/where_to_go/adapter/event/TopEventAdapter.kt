@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardTopEventBinding
 import ru.sectorsj.where_to_go.dto.Event
-import ru.sectorsj.where_to_go.utils.format.FormatUtils
+import ru.sectorsj.where_to_go.enumeration.Month
+import ru.sectorsj.where_to_go.enumeration.calcMonth
 import ru.sectorsj.where_to_go.utils.view.load
+import java.time.LocalDateTime
 
 typealias OnEventClickListener = (Event) -> Unit
 
@@ -32,16 +34,16 @@ class TopEventViewHolder(
 ):
     RecyclerView.ViewHolder(binding.root) {
         fun bind(event: Event) {
+            val date =  LocalDateTime.parse(event.startDatetime)
             with(binding) {
                 eventTitle.text = event.title
                 eventLocation.text = event.location.title
+                eventDay.text = date.dayOfMonth.toString()
+                eventMonth.text = calcMonth(date.month.name)
                 event.location.linkImage?.let {
                     val linkImages = it.split("|")
                     val linkImage = linkImages[0].trim()
                     eventImage.load(linkImage)
-                }
-                event.startDatetime?.let {
-                    //eventDate.text = FormatUtils.formatDate(it)
                 }
             }
             binding.root.setOnClickListener {
@@ -60,3 +62,4 @@ class TopEventDiffCallBack: DiffUtil.ItemCallback<Event>() {
     }
 
 }
+
