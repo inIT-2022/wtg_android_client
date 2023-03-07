@@ -1,4 +1,14 @@
 # **WhereToGo app**
+Проект представляет собой сервис по поиску мероприятий и достопамятных локаций города Краснодар (на текущий момент),
+а так же планирования отдыха для всей семьи.
+## **Технологии используемые в проекте**
+* MVVM
+* Kotlin coroutines
+* Kotlin flows
+* Retrofit 2
+* Room
+* Navigation component
+* Glide
 ### Для запуска проекта понадобится:
 * Android Studio IDE - [ссылка для скачивания](https://developer.android.com/studio)
 * Репозиторий - ***git clone https://github.com/OfflinePS-GB-boot/wtg_android_client.git***
