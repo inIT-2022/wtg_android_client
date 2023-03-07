@@ -12,23 +12,25 @@ enum class Month(val id: Int, val monthName: String) {
     SEP(9, "SEPTEMBER"),
     OCT(10, "OCTOBER"),
     NOV(11, "NOVEMBER"),
-    DEC(12, "DECEMBER")
-}
+    DEC(12, "DECEMBER");
 
-fun calcMonth(monthName: String): String {
-    return when (monthName) {
-        Month.JAN.monthName -> Month.JAN.name
-        Month.FEB.monthName -> Month.FEB.name
-        Month.MAR.monthName -> Month.MAR.name
-        Month.APR.monthName -> Month.APR.name
-        Month.MAY.monthName -> Month.MAY.name
-        Month.JUN.monthName -> Month.JUN.name
-        Month.JUL.monthName -> Month.JUL.name
-        Month.AUG.monthName -> Month.AUG.name
-        Month.SEP.monthName -> Month.SEP.name
-        Month.OCT.monthName -> Month.OCT.name
-        Month.NOV.monthName -> Month.NOV.name
-        Month.DEC.monthName -> Month.DEC.name
-        else -> throw IllegalArgumentException("Unknown month name")
+    companion object {
+        fun calcMonth(monthName: String): String {
+            return when (monthName) {
+                JAN.monthName -> JAN.name
+                FEB.monthName -> FEB.name
+                MAR.monthName -> MAR.name
+                APR.monthName -> APR.name
+                MAY.monthName -> MAY.name
+                JUN.monthName -> JUN.name
+                JUL.monthName -> JUL.name
+                AUG.monthName -> AUG.name
+                SEP.monthName -> SEP.name
+                OCT.monthName -> OCT.name
+                NOV.monthName -> NOV.name
+                DEC.monthName -> DEC.name
+                else -> throw IllegalArgumentException("Unknown month name")
+            }
+        }
     }
 }

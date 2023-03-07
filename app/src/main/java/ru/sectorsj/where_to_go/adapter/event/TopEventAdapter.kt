@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardTopEventBinding
 import ru.sectorsj.where_to_go.dto.Event
 import ru.sectorsj.where_to_go.enumeration.Month
-import ru.sectorsj.where_to_go.enumeration.calcMonth
 import ru.sectorsj.where_to_go.utils.view.load
 import java.time.LocalDateTime
 
@@ -39,7 +38,7 @@ class TopEventViewHolder(
                 eventTitle.text = event.title
                 eventLocation.text = event.location.title
                 eventDay.text = date.dayOfMonth.toString()
-                eventMonth.text = calcMonth(date.month.name)
+                eventMonth.text = Month.calcMonth(date.month.name)
                 event.location.linkImage?.let {
                     val linkImages = it.split("|")
                     val linkImage = linkImages[0].trim()

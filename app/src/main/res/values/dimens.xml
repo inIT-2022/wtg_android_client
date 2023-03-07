@@ -22,6 +22,20 @@
     <dimen name="auth_title_width_size">250dp</dimen>
     <dimen name="auth_text_size">12sp</dimen>
 
+    <!--Card top events-->
+    <dimen name="card_top_events_date_text_size">25sp</dimen>
+    <dimen name="card_top_events_event_title_text_size">25sp</dimen>
+    <dimen name="card_top_events_location_text_size">20sp</dimen>
+    <dimen name="card_top_events_month_text_size">13sp</dimen>
+    <dimen name="card_top_events_interested_count_padding">10dp</dimen>
+    <dimen name="card_top_events_interested_count_text_size">15sp</dimen>
+    <dimen name="card_top_events_event_image_height">230dp</dimen>
+    <dimen name="card_top_events_corner_radius">12dp</dimen>
+    <dimen name="card_top_events_cardview_elevation">5dp</dimen>
+    <dimen name="card_top_events_event_title_margin_bottom">20dp</dimen>
+    <dimen name="card_top_events_date_and_month_container_width">60dp</dimen>
+    <dimen name="card_top_events_date_and_month_container_height">70dp</dimen>
+
     <!--Margins/paddings-->
     <dimen name="layout_padding">8dp</dimen>
     <dimen name="vertical_margin">8dp</dimen>
