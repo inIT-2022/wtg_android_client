@@ -1,7 +1,7 @@
 # **WhereToGo app**
 ### Для запуска проекта понадобится:
 * Android Studio IDE - [ссылка для скачивания](https://developer.android.com/studio)
-* Репозиторирий - ***git clone https://github.com/OfflinePS-GB-boot/wtg_android_client.git***
+* Репозиторий - ***git clone https://github.com/OfflinePS-GB-boot/wtg_android_client.git***
 ### Запуск проекта:
 1. Запускаем Android Studio
 2. В правом верхнем углу жмем File
