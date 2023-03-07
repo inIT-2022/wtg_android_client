@@ -9,6 +9,7 @@
     <color name="light_black">#393737</color>
     <color name="white">#FFFFFFFF</color>
     <color name="light_pink">#F9DEFC</color>
+    <color name="light_grey">#B1B0B1</color>
 
     <color name="app_main_color">#EB9DF8</color>
     <color name="app_black_color">#201F20</color>

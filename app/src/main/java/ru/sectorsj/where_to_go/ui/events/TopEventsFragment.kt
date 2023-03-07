@@ -16,7 +16,6 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
@@ -109,7 +108,7 @@ class TopEventsFragment : Fragment() {
                 flowOf(s)
                     .debounce(1000).collect { charSeq ->
                     charSeq?.let {
-                        viewModel.data.collect{ eventList ->
+                        viewModel.data.collect { eventList ->
                             eventList.filter { event ->
                                 event.title.startsWith(charSeq, true)
                             }.apply {

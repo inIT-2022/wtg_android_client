@@ -2,16 +2,24 @@ package ru.sectorsj.where_to_go.ui
 
 import android.os.Bundle
 import android.view.*
+import androidx.activity.viewModels
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.R
+import ru.sectorsj.where_to_go.auth.WtgAppAuth
 import ru.sectorsj.where_to_go.databinding.ActivityAppBinding
+import ru.sectorsj.where_to_go.ui.auth.AuthViewModel
 import ru.sectorsj.where_to_go.utils.view.hide
 import ru.sectorsj.where_to_go.utils.view.setListener
 import ru.sectorsj.where_to_go.utils.view.show
 
+@OptIn(ExperimentalCoroutinesApi::class)
 class AppActivity : BaseActivity(), BottomNavController {
     lateinit var binding: ActivityAppBinding
+    private val authViewModel: AuthViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,10 +34,22 @@ class AppActivity : BaseActivity(), BottomNavController {
         }
         //window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
+
+        lifecycleScope.launchWhenCreated {
+            authViewModel.data.collectLatest {
+                invalidateOptionsMenu()
+            }
+        }
+
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
         menuInflater.inflate(R.menu.appbar_menu, menu)
+        menu.let {
+            it?.setGroupVisible(R.id.unAuth, !authViewModel.authentificated)
+            it?.setGroupVisible(R.id.auth, authViewModel.authentificated)
+        }
         return true
     }
 
@@ -46,6 +66,7 @@ class AppActivity : BaseActivity(), BottomNavController {
                 true
             }
             R.id.sign_out -> {
+                WtgAppAuth.getInstance().removeAuth()
                 true
             }
             else -> false

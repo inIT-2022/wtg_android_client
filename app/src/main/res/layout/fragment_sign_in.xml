@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/app_main_color"
-    tools:context=".ui.signin.SignInFragment">
+    tools:context=".ui.auth.signin.SignInFragment">
 
     <com.google.android.material.card.MaterialCardView
         android:layout_width="0dp"
@@ -30,7 +29,7 @@
 
             <TextView
                 android:id="@+id/sign_in_title"
-                android:layout_width="0dp"
+                android:layout_width="@dimen/auth_title_width_size"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/auth_vertical_margin"
                 android:gravity="center"
@@ -43,32 +42,71 @@
                 app:layout_constraintWidth_percent="0.5" />
 
             <EditText
-                android:id="@+id/user_login_txt"
+                android:id="@+id/user_name"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/auth_vertical_margin_small"
                 android:background="@drawable/custom_edit_text"
                 android:hint="@string/login"
+                android:textSize="@dimen/auth_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/sign_in_title"
                 app:layout_constraintWidth_percent="0.7" />
 
             <EditText
-                android:id="@+id/user_password_txt"
+                android:id="@+id/user_password"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/auth_vertical_margin_small"
                 android:background="@drawable/custom_edit_text"
                 android:hint="@string/password"
+                android:textSize="@dimen/auth_text_size"
                 android:inputType="textPassword"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_login_txt"
+                app:layout_constraintTop_toBottomOf="@id/user_name"
                 app:layout_constraintWidth_percent="0.7" />
 
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/sign_up_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/auth_vertical_margin"
+                android:gravity="center"
+                android:text="@string/sign_up"
+                android:textSize="@dimen/auth_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/user_password" />
 
-            <Button
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/restore_password_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="@string/restore_password"
+                android:textSize="@dimen/auth_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/sign_up_txt" />
+
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/security_policy_txt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/auth_vertical_margin_small"
+                android:gravity="center"
+                android:text="@string/security_policy"
+                android:textSize="@dimen/auth_text_size"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/restore_password_txt" />
+
+
+            <com.google.android.material.button.MaterialButton
                 android:id="@+id/reg_button"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
@@ -78,11 +116,9 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/user_password_txt"
-                app:layout_constraintVertical_bias="0.9"
-                app:layout_constraintWidth_percent="0.7"
-                app:strokeColor="@color/card_description_text_color"
-                app:strokeWidth="1dp" />
+                app:layout_constraintTop_toBottomOf="@id/security_policy_txt"
+                app:layout_constraintVertical_bias="0.1"
+                app:layout_constraintWidth_percent="0.7" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
