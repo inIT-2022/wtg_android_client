@@ -1,15 +1,18 @@
 package ru.sectorsj.where_to_go.ui.locations
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.R
+import ru.sectorsj.where_to_go.adapter.DefaultLoadStateAdapter
 import ru.sectorsj.where_to_go.adapter.location.OnLocationClickListener
 import ru.sectorsj.where_to_go.adapter.location.TopLocationAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentTopLocationsBinding
@@ -29,6 +32,32 @@ class TopLocationsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentTopLocationsBinding.inflate(inflater, container, false)
+        val adapter = prepareAdapter()
+        binding.listTopLocations.adapter = adapter
+
+        lifecycleScope.launchWhenCreated {
+            viewModel.locationsFlow.collectLatest {
+                adapter.submitData(it)
+            }
+        }
+
+        lifecycleScope.launchWhenCreated {
+            adapter.loadStateFlow.collectLatest {
+                with(binding) {
+                    swipeRefresh.isRefreshing = it.refresh is LoadState.Loading
+                    progressBar.isVisible = it.refresh is LoadState.Loading
+                }
+            }
+        }
+
+        binding.swipeRefresh.setOnRefreshListener {
+            adapter.refresh()
+        }
+
+        return binding.root
+    }
+
+    private fun prepareAdapter(): TopLocationAdapter {
         val adapter = TopLocationAdapter(object : OnLocationClickListener {
             override fun onLocationClick(location: Location) {
                 findNavController().navigate(
@@ -38,28 +67,11 @@ class TopLocationsFragment : Fragment() {
                     })
             }
         })
-        binding.listTopLocations.adapter = adapter
-
-        lifecycleScope.launchWhenCreated {
-            viewModel.data.collect {
-                adapter.submitList(it)
-            }
+        val stateAdapter = DefaultLoadStateAdapter {
+            adapter.refresh()
         }
+        adapter.withLoadStateFooter(stateAdapter)
 
-        lifecycleScope.launchWhenCreated {
-            viewModel.dataState.collect {
-                with(binding) {
-                    progressBar.isVisible = it.loading
-                    swipeRefresh.isRefreshing = it.refreshing
-                }
-            }
-        }
-
-        binding.swipeRefresh.setOnRefreshListener {
-            viewModel.refreshLocations()
-        }
-
-        return binding.root
+        return adapter
     }
-
 }

@@ -2,6 +2,7 @@ package ru.sectorsj.where_to_go.adapter.location
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -13,7 +14,7 @@ private typealias onLocationClickListener = () -> Unit
 
 class LocationAdapter(
     private val onLocationClickListener: onLocationClickListener
-) : ListAdapter<Location, LocationViewHolder>(LocationDiffCallBack()) {
+) : PagingDataAdapter<Location, LocationViewHolder>(LocationDiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
         val binding =
             CardLocationBinding.inflate(LayoutInflater.from(parent.context), parent, false)
@@ -22,7 +23,9 @@ class LocationAdapter(
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
         val location = getItem(position)
-        holder.bind(location)
+        if (location != null) {
+            holder.bind(location)
+        }
     }
 }
 

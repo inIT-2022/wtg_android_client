@@ -1,9 +1,9 @@
 package ru.sectorsj.where_to_go.repository.locationRepo
 
+import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
 import ru.sectorsj.where_to_go.dto.Location
 
 interface LocationRepository {
-    val data: Flow<List<Location>>
-    suspend fun getAll()
+    suspend fun getPagedLocations(): Flow<PagingData<Location>>
 }

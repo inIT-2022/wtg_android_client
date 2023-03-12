@@ -9,6 +9,7 @@
 * Room
 * Navigation component
 * Glide
+* Paging library v3
 ### Для запуска проекта понадобится:
 * Android Studio IDE - [ссылка для скачивания](https://developer.android.com/studio)
 * Репозиторий - ***git clone https://github.com/OfflinePS-GB-boot/wtg_android_client.git***

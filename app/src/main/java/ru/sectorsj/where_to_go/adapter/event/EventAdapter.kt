@@ -2,6 +2,7 @@ package ru.sectorsj.where_to_go.adapter.event
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -11,7 +12,7 @@ import ru.sectorsj.where_to_go.utils.view.load
 
 private typealias onEventClickListener = () -> Unit
 
-class EventAdapter(private val onEventClickListener: onEventClickListener): ListAdapter<Event, EventViewHolder>(
+class EventAdapter(private val onEventClickListener: onEventClickListener): PagingDataAdapter<Event, EventViewHolder>(
     EventDiffCallBack()
 ) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): EventViewHolder {
@@ -21,7 +22,9 @@ class EventAdapter(private val onEventClickListener: onEventClickListener): List
 
     override fun onBindViewHolder(holder: EventViewHolder, position: Int) {
         val event = getItem(position)
-        holder.bind(event)
+        event?.let {
+            holder.bind(it)
+        }
     }
 
 }
@@ -33,11 +36,7 @@ class EventViewHolder(
     fun bind(event: Event) {
         with(binding) {
             eventTitle.text = event.title
-            event.location.linkImage?.let {
-                val linkImages = it.split("|")
-                val linkImage = linkImages[0].trim()
-                eventImage.load(linkImage)
-            }
+            eventImage.load(event.linkImage)
         }
         binding.root.setOnClickListener {
             onEventClickListener.invoke()

@@ -43,4 +43,7 @@
     <string name="notify_email">Невалидный email</string>
     <string name="notify_pass">Невалидный пароль</string>
     <string name="notify_pass_not_equals">Пароли не совпадают</string>
+    <string name="are_interested">понравилось</string>
+    <string name="load_error">Упс, что-то пошло не так</string>
+    <string name="try_again">Повторить загрузку</string>
 </resources>

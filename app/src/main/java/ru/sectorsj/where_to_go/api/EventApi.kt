@@ -14,10 +14,12 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Path
+import retrofit2.http.Query
 import ru.sectorsj.where_to_go.dto.Event
 import ru.sectorsj.where_to_go.dto.Location
 import java.lang.reflect.Type
 import kotlin.properties.Delegates
+
 
 const val BASE_URL = "http://95.163.237.3:8179/wtg/api/v1/"
 private val typeToken = TypeToken.getParameterized(Location::class.java).type
@@ -109,6 +111,9 @@ interface EventApiService {
 
     @GET("events/{id}")
     suspend fun getEventById(@Path("id") id: Long): Response<Event>
+
+    @GET("events/after-now")
+    suspend fun getPagedEvents(@Query("page") page: Int, @Query("pageSize") pageSize: Int): Response<List<Event>>
 }
 
 

@@ -9,6 +9,8 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.event.EventAdapter
 import ru.sectorsj.where_to_go.adapter.location.LocationAdapter
@@ -44,20 +46,20 @@ class MainFragment : Fragment() {
         binding.locationsList.adapter = locationAdapter
 
         lifecycleScope.launchWhenCreated {
-            eventViewModel.data.collect {
-                eventAdapter.submitList(it)
+            eventViewModel.eventsFlow.collectLatest {
+                eventAdapter.submitData(it)
             }
         }
 
         lifecycleScope.launchWhenCreated {
-            eventViewModel.dataState.collect {
-                binding.progressBar.isVisible = it.loading
+            eventAdapter.loadStateFlow.collectLatest {
+                binding.progressBar.isVisible = it.refresh is LoadState.Loading
             }
         }
 
         lifecycleScope.launchWhenCreated {
-            locationViewModel.data.collect {
-                locationAdapter.submitList(it)
+            locationViewModel.locationsFlow.collectLatest {
+                locationAdapter.submitData(it)
             }
         }
 

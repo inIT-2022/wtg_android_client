@@ -45,13 +45,13 @@ class LocationDetailsFragment : Fragment() {
                 locationDetailsDescription.text = it.description
                 locationWorkDays.text = getString(
                     R.string.location_work_days,
-                    FormatUtils.formatTime(it.workTimeStart),
-                    FormatUtils.formatTime(it.workTimeEnd)
+                    it.workTimeStart?.let { workTimeStart -> FormatUtils.formatTime(workTimeStart) },
+                    it.workTimeEnd?.let { workTimeEnd -> FormatUtils.formatTime(workTimeEnd) }
                 )
                 locationWorkWeekend.text = getString(
                     R.string.location_work_weekend,
-                    FormatUtils.formatTime(it.workTimeStart),
-                    FormatUtils.formatTime(it.workTimeEnd)
+                    it.workTimeStart?.let { workTimeStart -> FormatUtils.formatTime(workTimeStart) },
+                    it.workTimeEnd?.let { workTimeEnd -> FormatUtils.formatTime(workTimeEnd) }
                 )
                 locationWorkBreak.text =
                     if (it.workBreakStart.isNullOrBlank() && it.workBreakEnd.isNullOrBlank()) getString(R.string.not_indicated)
