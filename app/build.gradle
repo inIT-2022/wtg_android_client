@@ -52,6 +52,7 @@ dependencies {
     def gson = "2.8.7"
     def material = "1.8.0"
     def viewPager2 = "1.0.0"
+    def paging = "3.1.0"
 
     implementation 'androidx.core:core-ktx:1.7.0'
     implementation 'androidx.appcompat:appcompat:1.5.1'
@@ -85,7 +86,11 @@ dependencies {
     kapt "androidx.room:room-compiler:$room"
     implementation "androidx.room:room-runtime:$room"
     implementation "androidx.room:room-ktx:$room"
+    implementation "androidx.room:room-paging:$room"
 
     //viewPager
     implementation "androidx.viewpager2:viewpager2:$viewPager2"
+
+    //paging library v3
+    implementation "androidx.paging:paging-runtime-ktx:$paging"
 }

@@ -10,17 +10,17 @@ data class LocationEntity(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
     val title: String,
-    val description: String,
-    val fullDescription: String,
+    val description: String?,
+    val fullDescription: String?,
     val address: String,
-    val workTimeStart: String,
-    val workTimeEnd: String,
+    val workTimeStart: String?,
+    val workTimeEnd: String?,
     val workBreakStart: String?,
     val workBreakEnd: String?,
     val linkImage: String?,
-    val linkSite: String,
-    val latitude: Double,
-    val longitude: Double
+    val linkSite: String?,
+    val latitude: Double?,
+    val longitude: Double?
 ) {
     fun toDto() = Location(
         id = id,

@@ -11,6 +11,7 @@ data class Event(
     val startDatetime: String?,
     val finishDatetime: String?,
     val linkEventSite: String,
+    val linkImage: String,
     val price: Int?,
     val location: Location,
     val isActive: Boolean,

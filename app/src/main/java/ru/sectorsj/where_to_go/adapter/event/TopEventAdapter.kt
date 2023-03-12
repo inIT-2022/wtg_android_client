@@ -2,8 +2,8 @@ package ru.sectorsj.where_to_go.adapter.event
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardTopEventBinding
 import ru.sectorsj.where_to_go.dto.Event
@@ -14,7 +14,7 @@ import java.time.LocalDateTime
 typealias OnEventClickListener = (Event) -> Unit
 
 class TopEventAdapter(private val onEventClickListener: OnEventClickListener):
-    ListAdapter<Event, TopEventViewHolder>(TopEventDiffCallBack()) {
+    PagingDataAdapter<Event, TopEventViewHolder>(TopEventDiffCallBack()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TopEventViewHolder {
         val binding = CardTopEventBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return TopEventViewHolder(binding, onEventClickListener)
@@ -22,7 +22,9 @@ class TopEventAdapter(private val onEventClickListener: OnEventClickListener):
 
     override fun onBindViewHolder(holder: TopEventViewHolder, position: Int) {
         val event = getItem(position)
-        holder.bind(event)
+        event?.let {
+            holder.bind(it)
+        }
     }
 
 }
@@ -39,11 +41,7 @@ class TopEventViewHolder(
                 eventLocation.text = event.location.title
                 eventDay.text = date.dayOfMonth.toString()
                 eventMonth.text = Month.calcMonth(date.month.name)
-                event.location.linkImage?.let {
-                    val linkImages = it.split("|")
-                    val linkImage = linkImages[0].trim()
-                    eventImage.load(linkImage)
-                }
+                eventImage.load(event.linkImage)
             }
             binding.root.setOnClickListener {
                 onEventClickListener.invoke(event)

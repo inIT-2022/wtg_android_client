@@ -1,32 +1,32 @@
 package ru.sectorsj.where_to_go.repository.locationRepo
 
-import androidx.lifecycle.map
-import kotlinx.coroutines.Dispatchers
+import androidx.paging.*
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.map
-import ru.sectorsj.where_to_go.api.LocationApi
 import ru.sectorsj.where_to_go.db.dao.LocationDao
-import ru.sectorsj.where_to_go.db.entity.LocationEntity
-import ru.sectorsj.where_to_go.db.entity.fromEntity
-import ru.sectorsj.where_to_go.db.entity.toEntity
 import ru.sectorsj.where_to_go.dto.Location
-import java.net.ConnectException
+import ru.sectorsj.where_to_go.repository.eventRepo.EventRepositoryImpl.Companion.PAGE_SIZE
 
-class LocationRepositoryImpl(private val dao: LocationDao) : LocationRepository {
-    override val data: Flow<List<Location>> = dao.getAll().map(List<LocationEntity>::fromEntity)
-        .flowOn(Dispatchers.IO)
+@OptIn(ExperimentalPagingApi::class)
+class LocationRepositoryImpl(
+    private val dao: LocationDao
+    ) : LocationRepository {
 
-    override suspend fun getAll() {
-        try {
-            val response = LocationApi.service.getLocations()
-            if (!response.isSuccessful) {
-                throw ConnectException(response.code().toString())
+    override suspend fun getPagedLocations(): Flow<PagingData<Location>> {
+        return Pager(
+            config = PagingConfig(
+                pageSize = PAGE_SIZE,
+                prefetchDistance = PAGE_SIZE / 2,
+                enablePlaceholders = false,
+                initialLoadSize = PAGE_SIZE
+            ),
+            remoteMediator = LocationRemoteMediator(dao),
+            pagingSourceFactory = { dao.getPagedLocations() }
+        ).flow.map {
+            it.map { locationEntity ->
+                locationEntity.toDto()
             }
-            val body = response.body() ?: throw Exception("Body is empty")
-            dao.insert(body.toEntity())
-        } catch (e: Exception) {
-            e.printStackTrace()
         }
     }
+
 }

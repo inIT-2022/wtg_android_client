@@ -25,7 +25,7 @@
     <!--Card top events-->
     <dimen name="card_top_events_date_text_size">25sp</dimen>
     <dimen name="card_top_events_event_title_text_size">25sp</dimen>
-    <dimen name="card_top_events_location_text_size">20sp</dimen>
+    <dimen name="card_top_events_location_text_size">16sp</dimen>
     <dimen name="card_top_events_month_text_size">13sp</dimen>
     <dimen name="card_top_events_interested_count_padding">10dp</dimen>
     <dimen name="card_top_events_interested_count_text_size">15sp</dimen>

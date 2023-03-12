@@ -10,21 +10,30 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
+import androidx.paging.LoadState
+import androidx.paging.filter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.flow.debounce
 import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.launch
 import ru.sectorsj.where_to_go.R
+import ru.sectorsj.where_to_go.adapter.DefaultLoadStateAdapter
 import ru.sectorsj.where_to_go.adapter.event.TopEventAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentTopEventsBinding
 import ru.sectorsj.where_to_go.utils.view.hideAppBar
 import ru.sectorsj.where_to_go.utils.view.showAppBar
 
+@OptIn(FlowPreview::class)
 class TopEventsFragment : Fragment() {
 
     lateinit var binding: FragmentTopEventsBinding
@@ -47,46 +56,36 @@ class TopEventsFragment : Fragment() {
     ): View {
         binding = FragmentTopEventsBinding.inflate(inflater, container, false)
 
-        val adapter = TopEventAdapter {
-            findNavController().navigate(
-                R.id.action_topEvents_to_eventDetailsFragment,
-                Bundle().apply {
-                    putParcelable(EVENT_KEY, it)
-                })
-            showAppBar()
-        }
+        val adapter = prepareAdapter()
 
         binding.listTopEvents.apply {
-            setAdapter(adapter)
+            this.adapter = adapter
             addItemDecoration(
                 DividerItemDecoration(
                     requireActivity(),
                     LinearLayoutManager.VERTICAL
                 )
             )
-            scrollToPosition(0)
         }
 
-
         lifecycleScope.launchWhenCreated {
-            viewModel.data.collect {
-                adapter.submitList(it)
+            viewModel.eventsFlow.collectLatest {
+                adapter.submitData(it)
+                val itemCount = adapter.itemCount
                 binding.dashboardSubTitle.text =
-                    getString(R.string.dashboard_sub_title, it.size.toString())
+                    getString(R.string.dashboard_sub_title, itemCount.toString())
             }
         }
 
         lifecycleScope.launchWhenCreated {
-            viewModel.dataState.collect {
-                with(binding) {
-                    progressBar.isVisible = it.loading
-                    swipeRefresh.isRefreshing = it.refreshing
-                }
+            adapter.loadStateFlow.collectLatest {
+                binding.progressBar.isVisible = it.refresh is LoadState.Loading
+                binding.swipeRefresh.isRefreshing = it.refresh is LoadState.Loading
             }
         }
 
         binding.swipeRefresh.setOnRefreshListener {
-            viewModel.refreshEvents()
+            adapter.refresh()
         }
 
         lifecycleScope.launchWhenCreated {
@@ -101,24 +100,43 @@ class TopEventsFragment : Fragment() {
         showAppBar()
     }
 
-    private fun provideTextWatcher(adapter: TopEventAdapter): TextWatcher = object: TextWatcher {
+
+    private fun provideTextWatcher(adapter: TopEventAdapter): TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
         override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
             CoroutineScope(Dispatchers.IO).launch {
                 flowOf(s)
-                    .debounce(1000).collect { charSeq ->
-                    charSeq?.let {
-                        viewModel.data.collect { eventList ->
-                            eventList.filter { event ->
-                                event.title.startsWith(charSeq, true)
-                            }.apply {
-                                adapter.submitList(this)
+                    .debounce(500).collect { charSeq ->
+                        charSeq?.let {
+                            viewModel.eventsFlow.collectLatest { eventList ->
+                                eventList.filter { event ->
+                                    event.title.contains(charSeq, true)
+                                }.apply {
+                                    adapter.submitData(this)
+                                }
                             }
                         }
                     }
-                }
             }
         }
+
         override fun afterTextChanged(s: Editable?) {}
+    }
+
+    private fun prepareAdapter(): TopEventAdapter {
+        val adapter = TopEventAdapter { event ->
+            findNavController().navigate(
+                R.id.action_topEvents_to_eventDetailsFragment,
+                Bundle().apply {
+                    putParcelable(EVENT_KEY, event)
+                }
+            )
+            showAppBar()
+        }
+        val stateAdapter = DefaultLoadStateAdapter {
+            adapter.refresh()
+        }
+        adapter.withLoadStateFooter(stateAdapter)
+        return adapter
     }
 }

@@ -27,7 +27,7 @@ class EventDetailsFragment : Fragment() {
         binding = FragmentEventDetailsBinding.inflate(inflater, container, false)
         event?.let {
             with(binding) {
-                it.location.linkImage?.let {
+                it.linkImage.let {
                     val linksImages = it.split("|")
                     eventDetailsImagePager.adapter = ImageAdapter(this@EventDetailsFragment, linksImages)
                 }

@@ -47,6 +47,10 @@
     <string name="choose_your_rest">Choose your rest</string>
     <string name="source">Source</string>
 
+    <!-- Card load state-->
+    <string name="load_error">Oops, can\'t load data</string>
+    <string name="try_again">Try Again</string>
+
     <string name="not_indicated">not indicated</string>
     <string name="dashboard_heading">Find amazing events happening around you</string>
     <string name="dashboard_sub_title">%1$s events around you</string>

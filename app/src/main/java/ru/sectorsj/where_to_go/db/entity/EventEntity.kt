@@ -22,6 +22,8 @@ data class EventEntity(
     val finishDatetime: String?,
     @ColumnInfo(name = "_linkEventSite")
     val linkEventSite: String,
+    @ColumnInfo(name = "_linkImage")
+    val linkImage: String,
     @ColumnInfo(name = "_price")
     val price: Int?,
     @Embedded
@@ -38,6 +40,7 @@ data class EventEntity(
         startDatetime = startDatetime,
         finishDatetime = finishDatetime,
         linkEventSite = linkEventSite,
+        linkImage= linkImage,
         price = price,
         location = location,
         isActive = isActive,
@@ -52,6 +55,7 @@ data class EventEntity(
             startDatetime = dto.startDatetime,
             finishDatetime = dto.finishDatetime,
             linkEventSite = dto.linkEventSite,
+            linkImage = dto.linkImage,
             price = dto.price,
             location = dto.location,
             isActive = dto.isActive,
