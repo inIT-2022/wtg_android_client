@@ -8,6 +8,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.auth.WtgAppAuth
@@ -19,11 +20,13 @@ import ru.sectorsj.where_to_go.utils.DateInputMask
 import ru.sectorsj.where_to_go.utils.format.StringUtils
 import ru.sectorsj.where_to_go.utils.view.checkEditFields
 import ru.sectorsj.where_to_go.utils.view.showToast
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class SignUpFragment : Fragment() {
     lateinit var binding: FragmentSignUpBinding
     private val signUpViewModel: SignUpViewModel by viewModels()
+    @Inject lateinit var auth: WtgAppAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -66,7 +69,7 @@ class SignUpFragment : Fragment() {
         }
         lifecycleScope.launchWhenCreated {
             signUpViewModel.data.collectLatest { user ->
-                WtgAppAuth.getInstance().setAuth(user.email)
+                auth.setAuth(user.email)
                 if(user.email != null) {
                     findNavController().navigateUp()
                 }

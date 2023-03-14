@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.event.EventAdapter
@@ -21,6 +22,7 @@ import ru.sectorsj.where_to_go.ui.auth.AuthViewModel
 import ru.sectorsj.where_to_go.ui.events.EventViewModel
 import ru.sectorsj.where_to_go.ui.locations.LocationViewModel
 
+@AndroidEntryPoint
 class MainFragment : Fragment() {
 
     lateinit var binding: FragmentMainBinding

@@ -10,6 +10,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.DefaultLoadStateAdapter
@@ -18,6 +19,7 @@ import ru.sectorsj.where_to_go.adapter.location.TopLocationAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentTopLocationsBinding
 import ru.sectorsj.where_to_go.dto.Location
 
+@AndroidEntryPoint
 class TopLocationsFragment : Fragment() {
 
     lateinit var binding: FragmentTopLocationsBinding

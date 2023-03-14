@@ -5,9 +5,13 @@ import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 import ru.sectorsj.where_to_go.db.dao.EventDao
 import ru.sectorsj.where_to_go.dto.Event
+import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class EventRepositoryImpl(private val dao: EventDao) :
+class EventRepositoryImpl @Inject constructor(
+    private val dao: EventDao,
+    private val eventRemoteMediator: EventRemoteMediator
+    ) :
     EventRepository {
 
     override suspend fun getPagedEvents(): Flow<PagingData<Event>> {
@@ -18,7 +22,7 @@ class EventRepositoryImpl(private val dao: EventDao) :
                 initialLoadSize = PAGE_SIZE,
                 prefetchDistance = PAGE_SIZE / 2
             ),
-            remoteMediator = EventRemoteMediator(dao),
+            remoteMediator = eventRemoteMediator,
             pagingSourceFactory = { dao.getEventPagingSource() },
 
         ).flow.map {

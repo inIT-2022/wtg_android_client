@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.image.ImageAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentEventDetailsBinding
@@ -15,7 +16,7 @@ import ru.sectorsj.where_to_go.ui.events.TopEventsFragment.Companion.EVENT_KEY
 import ru.sectorsj.where_to_go.utils.format.FormatUtils
 import ru.sectorsj.where_to_go.utils.view.hideAppBar
 
-
+@AndroidEntryPoint
 class EventDetailsFragment : Fragment() {
     lateinit var binding: FragmentEventDetailsBinding
 

@@ -17,14 +17,14 @@ private val loggingInterceptor = HttpLoggingInterceptor().apply {
     }
 }
 
-private val okHttp = OkHttpClient.Builder()
+fun locationOkHttpClient() = OkHttpClient.Builder()
     .addInterceptor(loggingInterceptor)
     .build()
 
-private val retrofit = Retrofit.Builder()
+fun locationRetrofitClient(okHttpClient: OkHttpClient) = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
     .baseUrl(BASE_URL)
-    .client(okHttp)
+    .client(okHttpClient)
     .build()
 
 interface LocationApiService {
@@ -39,10 +39,4 @@ interface LocationApiService {
 
     @GET("locations/{id}")
     suspend fun getLocationById(@Path("id") id: Long): Response<Location>
-}
-
-object LocationApi {
-    val service: LocationApiService by lazy {
-        retrofit.create(LocationApiService::class.java)
-    }
 }
