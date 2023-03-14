@@ -22,12 +22,12 @@ private val interceptor = HttpLoggingInterceptor().apply {
     }
 }
 
-private val okHttpClient = OkHttpClient.Builder()
+fun authOkHttpClient() = OkHttpClient.Builder()
     .addInterceptor(interceptor)
     .connectTimeout(5000, TimeUnit.MILLISECONDS)
     .build()
 
-private val retrofit = Retrofit.Builder()
+fun authRetroficClient(okHttpClient: OkHttpClient) = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
     .baseUrl(AUTH_URL)
     .client(okHttpClient)
@@ -39,10 +39,4 @@ interface AuthApiService {
 
     @POST("login")
     suspend fun signIn(@Body auth: Auth): Response<AuthState>
-}
-
-object AuthApi {
-    val service: AuthApiService by lazy {
-        retrofit.create(AuthApiService::class.java)
-    }
 }

@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import dagger.hilt.android.AndroidEntryPoint
 import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.image.ImageAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentLocationDetailsBinding
@@ -12,6 +13,7 @@ import ru.sectorsj.where_to_go.dto.Location
 import ru.sectorsj.where_to_go.ui.locations.TopLocationsFragment.Companion.LOCATION_KEY
 import ru.sectorsj.where_to_go.utils.format.FormatUtils
 
+@AndroidEntryPoint
 class LocationDetailsFragment : Fragment() {
 
     lateinit var binding: FragmentLocationDetailsBinding

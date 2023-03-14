@@ -4,14 +4,18 @@ import androidx.paging.ExperimentalPagingApi
 import androidx.paging.LoadType
 import androidx.paging.PagingState
 import androidx.paging.RemoteMediator
-import ru.sectorsj.where_to_go.api.EventApi
+import ru.sectorsj.where_to_go.api.EventApiService
 import ru.sectorsj.where_to_go.db.dao.EventDao
 import ru.sectorsj.where_to_go.db.entity.EventEntity
 import ru.sectorsj.where_to_go.db.entity.toEntity
 import java.net.ConnectException
+import javax.inject.Inject
 
 @OptIn(ExperimentalPagingApi::class)
-class EventRemoteMediator(private val eventDao: EventDao): RemoteMediator<Int, EventEntity>() {
+class EventRemoteMediator @Inject constructor(
+    private val eventDao: EventDao,
+    private val eventApi: EventApiService
+    ): RemoteMediator<Int, EventEntity>() {
     private var pageIndex = 1
 
     override suspend fun load(
@@ -23,7 +27,7 @@ class EventRemoteMediator(private val eventDao: EventDao): RemoteMediator<Int, E
         val limit = state.config.pageSize
 
         try {
-            val response = EventApi.service.getPagedEvents(pageIndex, limit)
+            val response = eventApi.getPagedEvents(pageIndex, limit)
             if (!response.isSuccessful) throw ConnectException(response.code().toString())
             val body = response.body() ?: throw Exception("Body is empty")
             if (loadType == LoadType.REFRESH) {

@@ -1,10 +1,14 @@
 package ru.sectorsj.where_to_go.auth
 
 import android.content.Context
+import dagger.hilt.android.qualifiers.ApplicationContext
 import kotlinx.coroutines.flow.MutableStateFlow
 import ru.sectorsj.where_to_go.model.AuthState
+import javax.inject.Inject
 
-class WtgAppAuth private constructor(context: Context) {
+class WtgAppAuth @Inject constructor(
+    @ApplicationContext context: Context
+) {
     private val prefs = context.getSharedPreferences("auth", Context.MODE_PRIVATE)
     val authStateFlow = MutableStateFlow(AuthState())
 
@@ -27,18 +31,6 @@ class WtgAppAuth private constructor(context: Context) {
     companion object {
         @JvmStatic
         val emailKey = "email"
-        @Volatile
-        private var instance: WtgAppAuth? = null
-
-        fun getInstance() = synchronized(this) {
-            instance ?: throw IllegalStateException("App is not initialized")
-        }
-        fun initAuth(context: Context) = instance ?: synchronized(this) {
-            instance ?: buildAuth(context).also {
-                instance = it
-            }
-        }
-        private fun buildAuth(context: Context): WtgAppAuth = WtgAppAuth(context)
     }
 
     @Synchronized

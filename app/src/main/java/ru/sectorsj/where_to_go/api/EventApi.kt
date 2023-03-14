@@ -95,14 +95,14 @@ private val loggingInterceptor = HttpLoggingInterceptor().apply {
     }
 }
 
-private val okHttp = OkHttpClient.Builder()
+fun eventOkHttpClient() = OkHttpClient.Builder()
     .addInterceptor(loggingInterceptor)
     .build()
 
-private val retrofit = Retrofit.Builder()
+fun eventRetrofitClient(okHttpClient: OkHttpClient): Retrofit = Retrofit.Builder()
     .addConverterFactory(GsonConverterInstance.createGsonConverter(typeToken, GetLocationDeserializer()))
     .baseUrl(BASE_URL)
-    .client(okHttp)
+    .client(okHttpClient)
     .build()
 
 interface EventApiService {
@@ -114,11 +114,4 @@ interface EventApiService {
 
     @GET("events/after-now")
     suspend fun getPagedEvents(@Query("page") page: Int, @Query("pageSize") pageSize: Int): Response<List<Event>>
-}
-
-
-object EventApi {
-    val service: EventApiService by lazy {
-        retrofit.create(EventApiService::class.java)
-    }
 }

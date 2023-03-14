@@ -1,6 +1,5 @@
 package ru.sectorsj.where_to_go.db.entity
 
-import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import ru.sectorsj.where_to_go.dto.Location

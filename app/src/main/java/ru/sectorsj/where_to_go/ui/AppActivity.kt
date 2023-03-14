@@ -6,6 +6,7 @@ import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.R
@@ -15,9 +16,12 @@ import ru.sectorsj.where_to_go.ui.auth.AuthViewModel
 import ru.sectorsj.where_to_go.utils.view.hide
 import ru.sectorsj.where_to_go.utils.view.setListener
 import ru.sectorsj.where_to_go.utils.view.show
+import javax.inject.Inject
 
+@AndroidEntryPoint
 @OptIn(ExperimentalCoroutinesApi::class)
 class AppActivity : BaseActivity(), BottomNavController {
+    @Inject lateinit var auth: WtgAppAuth
     lateinit var binding: ActivityAppBinding
     private val authViewModel: AuthViewModel by viewModels()
 
@@ -40,7 +44,6 @@ class AppActivity : BaseActivity(), BottomNavController {
                 invalidateOptionsMenu()
             }
         }
-
 
     }
 
@@ -66,7 +69,7 @@ class AppActivity : BaseActivity(), BottomNavController {
                 true
             }
             R.id.sign_out -> {
-                WtgAppAuth.getInstance().removeAuth()
+                auth.removeAuth()
                 true
             }
             else -> false

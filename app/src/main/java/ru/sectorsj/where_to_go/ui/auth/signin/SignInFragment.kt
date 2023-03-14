@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import ru.sectorsj.where_to_go.auth.WtgAppAuth
 import ru.sectorsj.where_to_go.databinding.FragmentSignInBinding
@@ -15,10 +16,13 @@ import ru.sectorsj.where_to_go.model.Auth
 import ru.sectorsj.where_to_go.ui.AppBarController
 import ru.sectorsj.where_to_go.ui.BottomNavController
 import ru.sectorsj.where_to_go.utils.view.checkEditFields
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignInFragment : Fragment() {
     lateinit var binding: FragmentSignInBinding
     private val signInViewModel: SignInViewModel by viewModels()
+    @Inject lateinit var auth: WtgAppAuth
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -40,7 +44,7 @@ class SignInFragment : Fragment() {
         }
         lifecycleScope.launchWhenCreated {
             signInViewModel.data.collectLatest { authState ->
-                WtgAppAuth.getInstance().setAuth(authState.email)
+                auth.setAuth(authState.email)
                 if (authState.email != null) {
                     findNavController().navigateUp()
                 }

@@ -10,15 +10,13 @@ import android.view.ViewGroup
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.lifecycleScope
-import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.paging.filter
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.FlowPreview
@@ -33,6 +31,7 @@ import ru.sectorsj.where_to_go.databinding.FragmentTopEventsBinding
 import ru.sectorsj.where_to_go.utils.view.hideAppBar
 import ru.sectorsj.where_to_go.utils.view.showAppBar
 
+@AndroidEntryPoint
 @OptIn(FlowPreview::class)
 class TopEventsFragment : Fragment() {
 
