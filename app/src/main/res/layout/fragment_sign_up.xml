@@ -147,14 +147,28 @@
                 app:layout_constraintTop_toBottomOf="@id/user_password"
                 app:layout_constraintWidth_percent="0.7" />
 
+            <com.google.android.material.checkbox.MaterialCheckBox
+                android:id="@+id/security_policy_checkBox"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:buttonTint="?attr/colorPrimaryVariant"
+                app:layout_constraintBottom_toBottomOf="@+id/security_policy_txt"
+                app:layout_constraintEnd_toStartOf="@+id/security_policy_txt"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintHorizontal_chainStyle="packed"
+                app:layout_constraintTop_toTopOf="@+id/security_policy_txt" />
+
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/security_policy_txt"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintStart_toEndOf="@id/security_policy_checkBox"
                 app:layout_constraintEnd_toEndOf="parent"
                 android:layout_marginTop="@dimen/auth_vertical_margin"
                 android:gravity="center"
+                android:clickable="true"
+                app:layout_constraintWidth_percent="0.4"
                 app:layout_constraintTop_toBottomOf="@id/user_repeat_password"
                 android:textSize="@dimen/auth_text_size"
                 android:text="@string/security_policy"/>

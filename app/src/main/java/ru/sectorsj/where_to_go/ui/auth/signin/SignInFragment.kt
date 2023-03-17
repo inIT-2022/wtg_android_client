@@ -7,15 +7,20 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
+import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.auth.WtgAppAuth
 import ru.sectorsj.where_to_go.databinding.FragmentSignInBinding
 import ru.sectorsj.where_to_go.model.Auth
 import ru.sectorsj.where_to_go.ui.AppBarController
 import ru.sectorsj.where_to_go.ui.BottomNavController
 import ru.sectorsj.where_to_go.utils.view.checkEditFields
+import ru.sectorsj.where_to_go.utils.view.hideAppBar
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -50,6 +55,11 @@ class SignInFragment : Fragment() {
                 }
             }
         }
+
+        binding.signUpTxt.setOnClickListener {
+            findNavController().navigate(R.id.action_signInFragment_to_signUpFragment)
+        }
+
         return binding.root
     }
 
@@ -58,5 +68,4 @@ class SignInFragment : Fragment() {
         (requireActivity() as AppBarController).showAppBar()
         (requireActivity() as BottomNavController).showBottomNav()
     }
-
 }

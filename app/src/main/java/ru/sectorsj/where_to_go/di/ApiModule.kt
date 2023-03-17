@@ -26,6 +26,6 @@ class ApiModule {
     @Provides
     @Singleton
     fun provideAuthApi(): AuthApiService {
-        return authRetroficClient(authOkHttpClient()).create(AuthApiService::class.java)
+        return authRetrofitClient(authOkHttpClient()).create(AuthApiService::class.java)
     }
 }

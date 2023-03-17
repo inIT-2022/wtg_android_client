@@ -27,7 +27,7 @@ fun authOkHttpClient() = OkHttpClient.Builder()
     .connectTimeout(5000, TimeUnit.MILLISECONDS)
     .build()
 
-fun authRetroficClient(okHttpClient: OkHttpClient) = Retrofit.Builder()
+fun authRetrofitClient(okHttpClient: OkHttpClient) = Retrofit.Builder()
     .addConverterFactory(GsonConverterFactory.create())
     .baseUrl(AUTH_URL)
     .client(okHttpClient)
