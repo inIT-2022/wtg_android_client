@@ -14,7 +14,6 @@ class WtgAppAuth @Inject constructor(
 
     init {
         val email = prefs.getString(emailKey, null)
-
         if (email == null) {
             authStateFlow.value = AuthState()
             prefs.edit().apply {

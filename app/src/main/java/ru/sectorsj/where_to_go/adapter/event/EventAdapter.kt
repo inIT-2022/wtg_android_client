@@ -26,7 +26,6 @@ class EventAdapter(private val onEventClickListener: onEventClickListener): Pagi
             holder.bind(it)
         }
     }
-
 }
 
 class EventViewHolder(
@@ -42,7 +41,6 @@ class EventViewHolder(
             onEventClickListener.invoke()
         }
     }
-
 }
 
 class EventDiffCallBack : DiffUtil.ItemCallback<Event>() {

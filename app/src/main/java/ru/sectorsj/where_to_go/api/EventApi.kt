@@ -84,7 +84,6 @@ object GsonConverterInstance {
         fun createGsonConverter(type: Type, typeAdapter: Any): Converter.Factory {
             val gsonBuilder = GsonBuilder().apply { registerTypeAdapter(type, typeAdapter) }
             val gson = gsonBuilder.create()
-
             return GsonConverterFactory.create(gson)
     }
 }

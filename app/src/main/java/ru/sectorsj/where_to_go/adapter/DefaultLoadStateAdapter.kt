@@ -39,6 +39,5 @@ class LoadStateHolder(
                 tryAgainAction.invoke()
             }
         }
-
     }
 }

@@ -70,9 +70,6 @@ class TopEventsFragment : Fragment() {
         lifecycleScope.launchWhenCreated {
             viewModel.eventsFlow.collectLatest {
                 adapter.submitData(it)
-                val itemCount = adapter.itemCount
-                binding.dashboardSubTitle.text =
-                    getString(R.string.dashboard_sub_title, itemCount.toString())
             }
         }
 
@@ -98,7 +95,6 @@ class TopEventsFragment : Fragment() {
         super.onDetach()
         showAppBar()
     }
-
 
     private fun provideTextWatcher(adapter: TopEventAdapter): TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

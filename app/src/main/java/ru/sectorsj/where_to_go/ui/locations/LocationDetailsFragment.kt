@@ -73,7 +73,6 @@ class LocationDetailsFragment : Fragment() {
                     textView = locationDetailsDescription
                 )
 
-
                 locationSource.setOnClickListener {
                     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(location1.linkSite))
                     startActivity(intent)

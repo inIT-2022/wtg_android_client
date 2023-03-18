@@ -38,13 +38,11 @@ class AppActivity : BaseActivity(), BottomNavController {
         }
         //window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
 
-
         lifecycleScope.launchWhenCreated {
             authViewModel.data.collectLatest {
                 invalidateOptionsMenu()
             }
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {

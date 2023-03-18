@@ -19,7 +19,6 @@ import javax.inject.Inject
 class LocationViewModel @Inject constructor(
     private val repository: LocationRepository
 ) : ViewModel() {
-
     //plans to get locations by search query
     private val searchBy = MutableLiveData("")
 
@@ -27,6 +26,4 @@ class LocationViewModel @Inject constructor(
         .flatMapLatest {
             repository.getPagedLocations()
         }.cachedIn(viewModelScope)
-
-
 }
