@@ -31,7 +31,7 @@ fun Fragment.checkEditFields(view: View): Boolean {
 
 fun Fragment.setFullDescriptionButtonVisibility(btn: Button, textView: TextView) {
     val textLength = textView.text.length
-    if (textLength < 200 || (textLength in 200..250)) {
+    if (textLength < 200 || (textLength in 200..450)) {
         textView.maxLines = Int.MAX_VALUE
         btn.visibility = View.GONE
     }

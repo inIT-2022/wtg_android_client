@@ -46,14 +46,30 @@ class LocationDetailsFragment : Fragment() {
                 locationDetailsTitle.text = location1.title
                 locationDetailsAddress.text = location1.address
                 locationDetailsDescription.text = location1.description
-                locationWorkDays.text = getString(
-                    R.string.location_work_days,
-                    location1.workTimeStart?.let { workTimeStart -> FormatUtils.formatTime(workTimeStart) },
-                    location1.workTimeEnd?.let { workTimeEnd -> FormatUtils.formatTime(workTimeEnd) }
-                )
+
+                if (location1.workTimeStart == null && location1.workTimeEnd == null) {
+                    locationWorkWeekend.visibility = View.GONE
+                    locationWorkBreak.visibility = View.GONE
+                }
+
+                locationWorkDays.text =
+                    if (location1.workTimeStart.isNullOrBlank()) getString(R.string.not_indicated)
+                    else getString(
+                        R.string.location_work_days,
+                            FormatUtils.formatTime(location1.workTimeStart),
+                        location1.workTimeEnd?.let { workTimeEnd ->
+                            FormatUtils.formatTime(
+                                workTimeEnd
+                            )
+                        }
+                    )
                 locationWorkWeekend.text = getString(
                     R.string.location_work_weekend,
-                    location1.workTimeStart?.let { workTimeStart -> FormatUtils.formatTime(workTimeStart) },
+                    location1.workTimeStart?.let { workTimeStart ->
+                        FormatUtils.formatTime(
+                            workTimeStart
+                        )
+                    },
                     location1.workTimeEnd?.let { workTimeEnd -> FormatUtils.formatTime(workTimeEnd) }
                 )
                 locationWorkBreak.text =
@@ -61,7 +77,11 @@ class LocationDetailsFragment : Fragment() {
                         R.string.not_indicated
                     )
                     else getString(R.string.location_work_break,
-                        location1.workBreakStart?.let { startTime -> FormatUtils.formatTime(startTime) },
+                        location1.workBreakStart?.let { startTime ->
+                            FormatUtils.formatTime(
+                                startTime
+                            )
+                        },
                         location1.workBreakEnd?.let { endTime -> FormatUtils.formatTime(endTime) })
 
                 locationAgePolicyValue.text = getString(R.string.not_indicated)

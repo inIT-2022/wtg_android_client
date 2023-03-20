@@ -3,6 +3,7 @@ package ru.sectorsj.where_to_go.ui
 import android.os.Bundle
 import android.view.*
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -36,7 +37,7 @@ class AppActivity : BaseActivity(), BottomNavController {
         navController?.let {
             bottomNav.setListener(navController, this@AppActivity)
         }
-        //window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         lifecycleScope.launchWhenCreated {
             authViewModel.data.collectLatest {
