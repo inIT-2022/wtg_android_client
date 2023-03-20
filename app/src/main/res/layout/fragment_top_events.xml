@@ -39,18 +39,6 @@
                     android:textSize="20sp"
                     android:textStyle="bold" />
 
-                <com.google.android.material.textview.MaterialTextView
-                    android:id="@+id/dashboard_sub_title"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="10dp"
-                    android:text="@string/dashboard_sub_title"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/dashboard"
-                    android:textColor="@color/light_black"
-                    android:textSize="10sp"
-                    android:textStyle="bold" />
-
                 <EditText
                     android:id="@+id/event_search_bar"
                     android:layout_width="0dp"
@@ -61,11 +49,11 @@
                     android:drawableEnd="@drawable/search_btn_background"
                     android:hint="@string/search_bar_hint"
                     android:paddingStart="20dp"
-                    android:paddingRight="5dp"
+                    android:paddingEnd="5dp"
                     android:textColorHint="@color/light_black"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/dashboard_sub_title" />
+                    app:layout_constraintTop_toBottomOf="@id/dashboard" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.appcompat.widget.Toolbar
@@ -104,18 +92,4 @@
             tools:listitem="@layout/card_top_event" />
 
     </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
-
-
-    <ProgressBar
-        android:id="@+id/progress_bar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:indeterminate="true"
-        android:indeterminateDrawable="@drawable/custom_progress"
-        android:progress="0"
-        android:visibility="invisible"
-        tools:visibility="visible" />
-
-
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

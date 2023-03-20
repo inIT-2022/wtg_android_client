@@ -76,35 +76,10 @@
                 android:gravity="center"
                 android:text="@string/sign_up"
                 android:textSize="@dimen/auth_text_size"
+                android:clickable="true"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/user_password" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/restore_password_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="12dp"
-                android:gravity="center"
-                android:text="@string/restore_password"
-                android:textSize="@dimen/auth_text_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintHorizontal_bias="0.0"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/sign_up_txt" />
-
-            <com.google.android.material.textview.MaterialTextView
-                android:id="@+id/security_policy_txt"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/auth_vertical_margin_small"
-                android:gravity="center"
-                android:text="@string/security_policy"
-                android:textSize="@dimen/auth_text_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/restore_password_txt" />
-
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/reg_button"
@@ -116,7 +91,7 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/security_policy_txt"
+                app:layout_constraintTop_toBottomOf="@id/sign_up_txt"
                 app:layout_constraintVertical_bias="0.1"
                 app:layout_constraintWidth_percent="0.7" />
 

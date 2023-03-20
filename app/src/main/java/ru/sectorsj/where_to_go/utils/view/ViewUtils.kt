@@ -22,16 +22,16 @@ fun BottomNavigationView.setListener(nav: NavController, context: Context? = nul
     setOnItemSelectedListener {
         when(it.itemId) {
             R.id.main_page -> {
-                nav.navigate(R.id.mainFragment)
+                nav.navigate(R.id.action_to_mainFragment)
                 (context as AppBarController).showAppBar()
                 true
             }
             R.id.events_page -> {
-                nav.navigate(R.id.topEvents)
+                nav.navigate(R.id.action_to_topEventsFragment)
                 true
             }
             R.id.locations_page -> {
-                nav.navigate(R.id.topLocations)
+                nav.navigate(R.id.action_to_topLocationsFragment)
                 (context as AppBarController).showAppBar()
                 true
             }

@@ -3,6 +3,7 @@ package ru.sectorsj.where_to_go.ui
 import android.os.Bundle
 import android.view.*
 import androidx.activity.viewModels
+import androidx.appcompat.app.AppCompatDelegate
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
@@ -36,15 +37,13 @@ class AppActivity : BaseActivity(), BottomNavController {
         navController?.let {
             bottomNav.setListener(navController, this@AppActivity)
         }
-        //window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN)
-
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
 
         lifecycleScope.launchWhenCreated {
             authViewModel.data.collectLatest {
                 invalidateOptionsMenu()
             }
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -59,12 +58,12 @@ class AppActivity : BaseActivity(), BottomNavController {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.sign_in -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.signInFragment)
+                findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_signInFragment)
                 hideBars()
                 true
             }
             R.id.sign_up -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.signUpFragment)
+                findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_signUpFragment)
                 hideBars()
                 true
             }

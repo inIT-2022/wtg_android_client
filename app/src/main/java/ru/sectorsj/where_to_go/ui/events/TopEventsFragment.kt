@@ -7,7 +7,6 @@ import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -28,6 +27,7 @@ import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.DefaultLoadStateAdapter
 import ru.sectorsj.where_to_go.adapter.event.TopEventAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentTopEventsBinding
+import ru.sectorsj.where_to_go.ui.main.MainFragment.Companion.EVENT_KEY
 import ru.sectorsj.where_to_go.utils.view.hideAppBar
 import ru.sectorsj.where_to_go.utils.view.showAppBar
 
@@ -38,11 +38,6 @@ class TopEventsFragment : Fragment() {
     lateinit var binding: FragmentTopEventsBinding
 
     private val viewModel: EventViewModel by viewModels()
-
-    companion object {
-        const val EVENT_KEY = "event_key"
-    }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -70,15 +65,11 @@ class TopEventsFragment : Fragment() {
         lifecycleScope.launchWhenCreated {
             viewModel.eventsFlow.collectLatest {
                 adapter.submitData(it)
-                val itemCount = adapter.itemCount
-                binding.dashboardSubTitle.text =
-                    getString(R.string.dashboard_sub_title, itemCount.toString())
             }
         }
 
         lifecycleScope.launchWhenCreated {
             adapter.loadStateFlow.collectLatest {
-                binding.progressBar.isVisible = it.refresh is LoadState.Loading
                 binding.swipeRefresh.isRefreshing = it.refresh is LoadState.Loading
             }
         }
@@ -98,7 +89,6 @@ class TopEventsFragment : Fragment() {
         super.onDetach()
         showAppBar()
     }
-
 
     private fun provideTextWatcher(adapter: TopEventAdapter): TextWatcher = object : TextWatcher {
         override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}

@@ -4,7 +4,6 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
@@ -18,16 +17,13 @@ import ru.sectorsj.where_to_go.adapter.location.OnLocationClickListener
 import ru.sectorsj.where_to_go.adapter.location.TopLocationAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentTopLocationsBinding
 import ru.sectorsj.where_to_go.dto.Location
+import ru.sectorsj.where_to_go.ui.main.MainFragment.Companion.LOCATION_KEY
 
 @AndroidEntryPoint
 class TopLocationsFragment : Fragment() {
 
     lateinit var binding: FragmentTopLocationsBinding
     private val viewModel: LocationViewModel by viewModels()
-
-    companion object {
-        const val LOCATION_KEY = "location_key"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,7 +43,6 @@ class TopLocationsFragment : Fragment() {
             adapter.loadStateFlow.collectLatest {
                 with(binding) {
                     swipeRefresh.isRefreshing = it.refresh is LoadState.Loading
-                    progressBar.isVisible = it.refresh is LoadState.Loading
                 }
             }
         }
