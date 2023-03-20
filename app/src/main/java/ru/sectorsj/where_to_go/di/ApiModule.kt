@@ -14,18 +14,18 @@ class ApiModule {
     @Provides
     @Singleton
     fun provideEventApi(): EventApiService {
-       return eventRetrofitClient(eventOkHttpClient()).create(EventApiService::class.java)
+       return ConnectionManager.getRetrofitClient(url = BASE_URL).create(EventApiService::class.java)
     }
 
     @Provides
     @Singleton
     fun provideLocationApi(): LocationApiService {
-        return locationRetrofitClient(locationOkHttpClient()).create(LocationApiService::class.java)
+        return ConnectionManager.getRetrofitClient(url = BASE_URL).create(LocationApiService::class.java)
     }
 
     @Provides
     @Singleton
     fun provideAuthApi(): AuthApiService {
-        return authRetrofitClient(authOkHttpClient()).create(AuthApiService::class.java)
+        return ConnectionManager.getRetrofitClient(url = AUTH_URL).create(AuthApiService::class.java)
     }
 }
