@@ -57,12 +57,12 @@ class AppActivity : BaseActivity(), BottomNavController {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         return when(item.itemId) {
             R.id.sign_in -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.signInFragment)
+                findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_signInFragment)
                 hideBars()
                 true
             }
             R.id.sign_up -> {
-                findNavController(R.id.nav_host_fragment).navigate(R.id.signUpFragment)
+                findNavController(R.id.nav_host_fragment).navigate(R.id.action_to_signUpFragment)
                 hideBars()
                 true
             }

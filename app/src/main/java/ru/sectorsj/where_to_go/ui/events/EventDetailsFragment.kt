@@ -14,7 +14,7 @@ import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.image.ImageAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentEventDetailsBinding
 import ru.sectorsj.where_to_go.dto.Event
-import ru.sectorsj.where_to_go.ui.events.TopEventsFragment.Companion.EVENT_KEY
+import ru.sectorsj.where_to_go.ui.main.MainFragment.Companion.EVENT_KEY
 import ru.sectorsj.where_to_go.utils.format.FormatUtils
 import ru.sectorsj.where_to_go.utils.view.hideAppBar
 import ru.sectorsj.where_to_go.utils.view.setFullDescriptionButtonVisibility

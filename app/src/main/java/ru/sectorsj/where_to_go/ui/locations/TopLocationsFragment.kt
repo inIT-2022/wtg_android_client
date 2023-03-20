@@ -18,16 +18,13 @@ import ru.sectorsj.where_to_go.adapter.location.OnLocationClickListener
 import ru.sectorsj.where_to_go.adapter.location.TopLocationAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentTopLocationsBinding
 import ru.sectorsj.where_to_go.dto.Location
+import ru.sectorsj.where_to_go.ui.main.MainFragment.Companion.LOCATION_KEY
 
 @AndroidEntryPoint
 class TopLocationsFragment : Fragment() {
 
     lateinit var binding: FragmentTopLocationsBinding
     private val viewModel: LocationViewModel by viewModels()
-
-    companion object {
-        const val LOCATION_KEY = "location_key"
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

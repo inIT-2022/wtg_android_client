@@ -30,16 +30,26 @@ class MainFragment : Fragment() {
     private val locationViewModel: LocationViewModel by viewModels()
     private val authViewModel: AuthViewModel by viewModels()
 
+    companion object {
+        const val EVENT_KEY = "event_key"
+        const val LOCATION_KEY = "location_key"
+    }
+
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         binding = FragmentMainBinding.inflate(inflater, container, false)
-        val eventAdapter = EventAdapter {
-            findNavController().navigate(R.id.action_mainFragment_to_topEvents)
+        val eventAdapter = EventAdapter { event ->
+            findNavController().navigate(R.id.action_mainFragment_to_eventDetailsFragment, Bundle().apply {
+                putParcelable(EVENT_KEY, event)
+            })
         }
-        val locationAdapter = LocationAdapter {
-            findNavController().navigate(R.id.actions_mainFragment_to_topLocations)
+        val locationAdapter = LocationAdapter { location ->
+            findNavController().navigate(R.id.action_mainFragment_to_locationDetailsFragment, Bundle().apply {
+                putParcelable(LOCATION_KEY, location)
+            })
         }
 
         binding.registrationNotice.isVisible = !authViewModel.authentificated

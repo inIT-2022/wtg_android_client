@@ -12,7 +12,7 @@ import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.image.ImageAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentLocationDetailsBinding
 import ru.sectorsj.where_to_go.dto.Location
-import ru.sectorsj.where_to_go.ui.locations.TopLocationsFragment.Companion.LOCATION_KEY
+import ru.sectorsj.where_to_go.ui.main.MainFragment.Companion.LOCATION_KEY
 import ru.sectorsj.where_to_go.utils.format.FormatUtils
 import ru.sectorsj.where_to_go.utils.view.setFullDescriptionButtonVisibility
 import ru.sectorsj.where_to_go.utils.view.shareText

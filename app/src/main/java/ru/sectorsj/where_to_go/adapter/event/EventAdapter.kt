@@ -3,14 +3,13 @@ package ru.sectorsj.where_to_go.adapter.event
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.paging.PagingDataAdapter
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import ru.sectorsj.where_to_go.databinding.CardEventBinding
 import ru.sectorsj.where_to_go.dto.Event
 import ru.sectorsj.where_to_go.utils.view.load
 
-private typealias onEventClickListener = () -> Unit
+private typealias onEventClickListener = (event: Event) -> Unit
 
 class EventAdapter(private val onEventClickListener: onEventClickListener): PagingDataAdapter<Event, EventViewHolder>(
     EventDiffCallBack()
@@ -38,7 +37,7 @@ class EventViewHolder(
             eventImage.load(event.linkImage)
         }
         binding.root.setOnClickListener {
-            onEventClickListener.invoke()
+            onEventClickListener.invoke(event)
         }
     }
 }

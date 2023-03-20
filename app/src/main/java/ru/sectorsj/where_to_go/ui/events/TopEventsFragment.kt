@@ -28,6 +28,7 @@ import ru.sectorsj.where_to_go.R
 import ru.sectorsj.where_to_go.adapter.DefaultLoadStateAdapter
 import ru.sectorsj.where_to_go.adapter.event.TopEventAdapter
 import ru.sectorsj.where_to_go.databinding.FragmentTopEventsBinding
+import ru.sectorsj.where_to_go.ui.main.MainFragment.Companion.EVENT_KEY
 import ru.sectorsj.where_to_go.utils.view.hideAppBar
 import ru.sectorsj.where_to_go.utils.view.showAppBar
 
@@ -38,11 +39,6 @@ class TopEventsFragment : Fragment() {
     lateinit var binding: FragmentTopEventsBinding
 
     private val viewModel: EventViewModel by viewModels()
-
-    companion object {
-        const val EVENT_KEY = "event_key"
-    }
-
 
     override fun onAttach(context: Context) {
         super.onAttach(context)

@@ -10,7 +10,7 @@ import ru.sectorsj.where_to_go.databinding.CardLocationBinding
 import ru.sectorsj.where_to_go.dto.Location
 import ru.sectorsj.where_to_go.utils.view.load
 
-private typealias onLocationClickListener = () -> Unit
+private typealias onLocationClickListener = (location: Location) -> Unit
 
 class LocationAdapter(
     private val onLocationClickListener: onLocationClickListener
@@ -43,7 +43,7 @@ class LocationViewHolder(
             }
         }
         binding.root.setOnClickListener {
-            onLocationClickListener.invoke()
+            onLocationClickListener.invoke(location)
         }
     }
 }
